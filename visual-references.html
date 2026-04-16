@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual References — Halo / OTT2</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #f0f0f0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      padding: 40px 32px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 28px;
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    header h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    header p.subtitle {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      margin-top: 56px;
+    }
+
+    .section-header h3 {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #1f1f1f;
+    }
+
+    /* ── Reference card ── */
+    .ref-block {
+      margin-bottom: 56px;
+    }
+
+    .ref-block .ref-meta {
+      margin-bottom: 16px;
+    }
+
+    .ref-block .ref-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e8e8e8;
+      margin-bottom: 4px;
+    }
+
+    .ref-block .ref-source {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 0.05em;
+    }
+
+    .ref-block .ref-source a {
+      color: #4a7eff;
+      text-decoration: none;
+    }
+
+    .ref-block .ref-source a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Grid layouts ── */
+    .grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+    }
+
+    .grid-2-1 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4px;
+    }
+
+    .grid-1-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4px;
+    }
+
+    .img-wrap {
+      overflow: hidden;
+      background: #111;
+      position: relative;
+    }
+
+    .img-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .img-wrap:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Fixed-height wrappers */
+    .h-400 { height: 400px; }
+    .h-300 { height: 300px; }
+    .h-240 { height: 240px; }
+    .h-200 { height: 200px; }
+    .h-auto { height: auto; }
+    .h-auto img { height: auto; object-fit: unset; }
+
+    /* ── Notes / annotation ── */
+    .note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #555;
+      line-height: 1.6;
+      max-width: 720px;
+    }
+
+    .note strong {
+      color: #888;
+    }
+
+    /* ── Color swatches ── */
+    .swatches {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch-color {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .swatch-label {
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    /* ── Tag pills ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      color: #666;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 56px 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 80px;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 24px;
+      font-size: 11px;
+      color: #333;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Halo / OTT2 — Visual References</h1>
+    <h2>Mood & Reference Board</h2>
+    <p class="subtitle">A living document. Updated as references are added.</p>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════
+       REF 01 — NBA Top Shot (El Dorado ©)
+  ═══════════════════════════════════════════ -->
+
+  <div class="ref-block">
+    <div class="ref-meta">
+      <div class="ref-title">01 — NBA Top Shot</div>
+      <div class="ref-source">
+        El Dorado © &nbsp;·&nbsp;
+        <a href="https://www.behance.net/gallery/189136431/NBA-Top-Shot" target="_blank">Behance ↗</a>
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Retro-Futurism</span>
+      <span class="tag">Bold Typography</span>
+      <span class="tag">Illustration</span>
+      <span class="tag">Motion / GIF</span>
+      <span class="tag">Blockchain / NFT</span>
+      <span class="tag">Sports</span>
+      <span class="tag">Dark Theme</span>
+    </div>
+
+    <p class="note">
+      <strong>Mood:</strong> High-energy retro-futurist aesthetic. Deep black backgrounds anchored by electric blue geometry and blazing red-orange characters. Strong typographic presence with scanline/halftone textures on 3D letterforms. Surrealist characters and floating objects (basketballs, diamonds, geometric shapes) create a collectable, premium feel.
+    </p>
+
+    <!-- Cover -->
+    <div class="section-header" style="margin-top:24px;"><h3>Cover / Hero</h3></div>
+
+    <div class="grid-1">
+      <div class="img-wrap h-400">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/0a36e0189136431.65e15a05adbb8.png"
+             alt="NBA Top Shot — Cover" loading="lazy" />
+      </div>
+    </div>
+
+    <p class="note">
+      <strong>Cover:</strong> Massive 3D "NBA" letterforms with horizontal scanline texture gradient (blue → dark blue). Basketball player silhouette (red) at center. Surrounding surrealist characters with basketball-heads and eyes. Neon blue perspective grid lines. White star/sparkle accents. Diamonds scattered throughout.
+    </p>
+
+    <!-- Color palette -->
+    <div class="section-header"><h3>Color Palette</h3></div>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#080810;"></div><div class="swatch-label">#080810<br>Void Black</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1E22FF;"></div><div class="swatch-label">#1E22FF<br>Electric Blue</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#4049FF;"></div><div class="swatch-label">#4049FF<br>Royal Blue</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FF3B1F;"></div><div class="swatch-label">#FF3B1F<br>Hot Red</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#C0392B;"></div><div class="swatch-label">#C0392B<br>Deep Red</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#A8B0FF;"></div><div class="swatch-label">#A8B0FF<br>Periwinkle</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;"></div><div class="swatch-label">#FFFFFF<br>White</div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#D0D0D0;"></div><div class="swatch-label">#D0D0D0<br>Silver</div></div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="section-header"><h3>Cards & Collectibles</h3></div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/5fbc80189136431.65d3f564c711d.jpeg" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/48dca9189136431.65d3f564c7c0b.jpeg" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/a5969a189136431.65dbd86df38f1.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/078f3a189136431.65d4348fbf92e.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/8f80a1189136431.65d42e1d96028.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/30ff4c189136431.65a6fe23d0ecd.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/8c7279189136431.65ceb7d3c1c16.jpeg" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Player Portraits & Scenes</h3></div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/3df0df189136431.65d4294b9e937.jpeg" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/348a86189136431.65d4348fbdd9d.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/346d1e189136431.65cebc2b65b98.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9ebb9a189136431.65d4348fbe99b.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/21a6e3189136431.65e00804b5ac1.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6c5cc6189136431.65b4419ad4c17.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f408c6189136431.65cec2b123cd7.jpeg" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7d6438189136431.65cec2b122f31.jpeg" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Typography & Lettering</h3></div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/5cff92189136431.65bc7947d8937.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/007d65189136431.65bc7947d8044.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/cb6b7f189136431.65d58416e47be.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/077ad8189136431.65d4348fbd16b.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/7f0b99189136431.65d4348fbc5aa.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Detail Screens & UI / App Views</h3></div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4f863b189136431.65dbcee0d6285.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4aa28f189136431.65dbd4711c3f3.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/73d793189136431.65cab1c58f1de.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4d69d1189136431.65bd744115fe5.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/e709ff189136431.65ceb7d675943.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6754ba189136431.65cc5dd3a167d.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f3d0b8189136431.65c036060c5db.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4f728e189136431.65da993c5355c.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/2d67a7189136431.65d58416e56bd.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-240">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/d9eb2a189136431.65c07cd2cc754.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Animation Stills / GIFs</h3></div>
+
+    <p class="note" style="margin-bottom:16px;">
+      <strong>Motion:</strong> The project includes several animated GIFs — looping card reveals, character animations, and typographic motion — reinforcing the premium collectible experience.
+    </p>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6d0927189136431.65b5a61818229.gif" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7dd9f1189136431.65bf412fd131e.gif" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/5f5cad189136431.65baec936ab45.gif" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/dd623c189136431.65d937c034495.png" alt="" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/078f3a189136431.65d4348fbf92e.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Design notes -->
+    <div class="section-header"><h3>Design Notes</h3></div>
+
+    <p class="note">
+      <strong>Typography:</strong> Extra-bold condensed sans-serif at massive scale. 3D extrusion with depth shading. Scanline/halftone horizontal line texture layered over gradient fills (blue-to-dark). Letterforms are architectural — they become environments, not just text.<br><br>
+      <strong>Illustration style:</strong> Flat vector with strong outlines. Characters are abstracted/surrealist — basketball-headed figures, floating eyeballs, red geometric humanoids. No photorealism; everything is graphic and symbolic.<br><br>
+      <strong>Composition:</strong> Dense, layered, collage-like. Objects overlap without strict depth hierarchy. Energy comes from contrast between: dark voids vs. bright solids, rigid geometry vs. organic figures, static letterforms vs. dynamic characters.<br><br>
+      <strong>Texture:</strong> Neon grid perspective lines (retro-80s arcade). Diamond/gem motifs signal rarity and value. Star/sparkle accents scattered throughout to imply magic and premium.<br><br>
+      <strong>Relevance for OTT2/Halo:</strong> Strong model for combining sport + digital collectible aesthetics. The dark-first palette, bold type hierarchy, and animated card reveals are directly applicable to a streaming/highlights product that wants a premium, energetic feel.
+    </p>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       REF 02 — NBA Top Shot: Design Critique of the Queue
+  ═══════════════════════════════════════════ -->
+
+  <hr class="divider" />
+
+  <div class="ref-block">
+    <div class="ref-meta">
+      <div class="ref-title">02 — Design Critique of NBA Top Shot Queue</div>
+      <div class="ref-source">
+        Alvin Chan &nbsp;·&nbsp; Product Designer &nbsp;·&nbsp;
+        <a href="https://alvin-chan.medium.com/design-critique-of-nba-top-shot-queue-fa4200bd3543" target="_blank">Medium ↗</a>
+        &nbsp;·&nbsp; March 31, 2021 · 16 min read
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">UX Critique</span>
+      <span class="tag">Queue / Waitlist</span>
+      <span class="tag">Live Drop UX</span>
+      <span class="tag">Social Proof</span>
+      <span class="tag">Sound Design</span>
+      <span class="tag">NFT / Collectible</span>
+      <span class="tag">First-Time Users</span>
+    </div>
+
+    <p class="note">
+      <strong>Context:</strong> In-depth product design critique of the NBA Top Shot pack drop queue by a product designer and active user. Covers the full pack drop funnel — announcement → waiting room → random queue assignment → checkout — with a focus on first-time user experience and trust in the randomization system.
+    </p>
+
+    <!-- Cover / Hero -->
+    <div class="section-header" style="margin-top:24px;"><h3>Product Hero — Moments as 3D Cards</h3></div>
+    <div class="grid-1">
+      <div class="img-wrap h-400">
+        <img src="ref02/01_cover.png" alt="NBA Top Shot hero — collectible moments as 3D cards" loading="lazy" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Visual language:</strong> Moments are presented as physical 3D trading cards in a dark space with neon outlines. Each card shows the player name, team logo badge, action (dunk/layup), and series. Floating/rotating in space signals digital collectibility vs. a flat image. Neon blue/purple outlines give a premium, hi-tech feel against the dark background.
+    </p>
+
+    <!-- Moment Cards UI -->
+    <div class="section-header"><h3>Moments Marketplace — Card Listing UI</h3></div>
+    <div class="grid-1">
+      <div class="img-wrap" style="height:auto; max-height:500px;">
+        <img src="ref02/02_moment_cards.png" alt="Moment cards marketplace listing" loading="lazy" style="object-fit:contain; background:#f5f5f5;" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Card data hierarchy:</strong> Player Name → Play type + Date + Series → Rarity (Common #/10000 LE) → Badges → Lowest Ask price → Number of listings. Clean light-mode card component. Badge system (team + sponsor icons) adds visual layering for authentication and identity. Price is the dominant action driver.
+    </p>
+
+    <!-- Pre-order / Pack Drop UI -->
+    <div class="section-header"><h3>Pack Drop Page — Purchase UI</h3></div>
+    <div class="grid-1">
+      <div class="img-wrap" style="height:auto; max-height:460px;">
+        <img src="ref02/04_preorder_ui.png" alt="Pre-order pack drop purchase UI" loading="lazy" style="object-fit:contain; background:#111;" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Layout:</strong> Split-screen — pack 3D visual left, purchase details right. Dark background with high-contrast "PRE-ORDER" label (cyan on dark). Rules listed with bullet icons inside a bordered box. Large price display, single dominant CTA button ("JOIN PRE-ORDER DROP"), secondary text link below. Scarcity reinforced: "Only 1 pack per person."
+    </p>
+
+    <!-- Queue Flowchart -->
+    <div class="section-header"><h3>Queue Flowchart — Pack Drop Process</h3></div>
+    <div class="img-wrap" style="height:auto; background:#1a1a2e; padding:8px;">
+      <img src="ref02/06_queue_flowchart.png" alt="Pack drop queue process diagram" loading="lazy" style="width:100%; height:auto; object-fit:unset;" />
+    </div>
+    <p class="note">
+      <strong>Drop funnel:</strong> Announcement (>8h) → 15min buffer → Random queue assignment → User checked if they can get a pack → Pack reserve → Checkout via Dapper. The key moment of uncertainty is the random assignment (~60 seconds) — this is the core UX problem the article addresses.
+    </p>
+
+    <!-- Queue UI -->
+    <div class="section-header"><h3>Queue Experience — "You Are Now In Line" Screen</h3></div>
+    <div class="grid-2" style="gap:4px;">
+      <div class="img-wrap" style="height:auto;">
+        <img src="ref02/10_queue_mobile.png" alt="Queue mobile UI" loading="lazy" style="width:100%; height:auto; object-fit:unset;" />
+      </div>
+      <div class="img-wrap" style="height:auto;">
+        <img src="ref02/12_queue_desktop.png" alt="Queue desktop UI" loading="lazy" style="width:100%; height:auto; object-fit:unset;" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Queue UI anatomy:</strong> Black background. Bold white "YOU ARE NOW IN LINE" heading (trust signal / confirmation). Subtitle identifies the specific pack. Blue progress bar (indeterminate — no real progress indication). Counter: "Number of users in line ahead of you: 7608" with timestamp. "LEAVE THE LINE (You will lose your place)" — clear consequence warning. Queue ID for support. This UI is minimal but cold — no engagement, no excitement, no emotional buffering during the wait.
+    </p>
+
+    <!-- Proposed Solutions -->
+    <div class="section-header"><h3>Proposed UX Concepts</h3></div>
+
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <div class="img-wrap" style="height:240px;">
+          <img src="ref02/13_randomizer_concept.png" alt="Queue randomizer animation concept" loading="lazy" />
+        </div>
+        <div style="padding:12px 0; font-size:11px; color:#555; line-height:1.5;">
+          <strong style="color:#888; display:block; margin-bottom:4px;">1. Randomizer Animation</strong>
+          Show numbers spinning and landing — like a lottery draw. Makes the fairness of the system visible and visceral. Reduces suspicion that the queue is biased.
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <div class="img-wrap" style="height:240px;">
+          <img src="ref02/14_sound_library.png" alt="TopShot Sound Library concept" loading="lazy" />
+        </div>
+        <div style="padding:12px 0; font-size:11px; color:#555; line-height:1.5;">
+          <strong style="color:#888; display:block; margin-bottom:4px;">2. Sound Design</strong>
+          Non-diegetic audio during queue: riff, build-up, celebration cue. Three triggers: New Badges / Queue Randomizer / Pack Opening. Music softens the anxiety of waiting and reinforces excitement of outcome.
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <div class="img-wrap" style="height:240px;">
+          <img src="ref02/16_social_proof.png" alt="Social proof queue with leaderboard" loading="lazy" />
+        </div>
+        <div style="padding:12px 0; font-size:11px; color:#555; line-height:1.5;">
+          <strong style="color:#888; display:block; margin-bottom:4px;">3. Social Proof Queue</strong>
+          Show neighboring users in the queue (username + position). Creates "in this together" effect — Asch conformity principle. Seeing others in the same position builds trust and reduces drop-off.
+        </div>
+      </div>
+    </div>
+
+    <!-- Key UX Insights for OTT2 -->
+    <div class="section-header"><h3>Key UX Insights — Relevance for Halo / OTT2</h3></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px;">
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">User Psychology</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          Users of high-scarcity digital products ask: <em>"Is this even legitimate?"</em> and <em>"Is the system biased against me?"</em> Design must proactively answer these questions without the user having to ask. Transparency and visible fairness are table stakes in any competitive digital-access flow.
+        </p>
+      </div>
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">3 Design Principles (First-Time Users)</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          1. <strong style="color:#aaa;">Make it clear what you want me to do.</strong><br/>
+          2. <strong style="color:#aaa;">Tell me what to expect and give me feedback.</strong><br/>
+          3. <strong style="color:#aaa;">Minimize friction and reduce effort to a minimum.</strong><br/><br/>
+          These apply directly to any "access event" in OTT2 — live game start, exclusive content drop, highlight reveal.
+        </p>
+      </div>
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">Target User Segments</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          Basketball Fans · Sports Community · Digital Asset Newcomers · Scalpers · Investors. The article focuses on <strong style="color:#aaa;">newcomers to digital assets</strong> as the highest-opportunity segment — they convert if onboarded well, but drop hardest if confused. Directly maps to Halo's challenge: bringing casual sports viewers into a new digital product.
+        </p>
+      </div>
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">Motion & Sound as Trust Tools</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          The article proposes that <strong style="color:#aaa;">animation + sound = perceived fairness</strong>. A spinning number feels more random than a static one. Music during uncertainty reduces frustration (Psychology of Music in Gambling Environments research). For Halo: micro-animations and sound cues during loading, buffering, or access moments could meaningfully reduce churn.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       REF 03 — Object Design / NBA Team Sites
+  ═══════════════════════════════════════════ -->
+
+  <hr class="divider" />
+
+  <div class="ref-block">
+    <div class="ref-meta">
+      <div class="ref-title">03 — NBA Team Sites — Design System</div>
+      <div class="ref-source">
+        Object × Engine Digital × NBA &nbsp;·&nbsp; 2022 &nbsp;·&nbsp;
+        <a href="https://object.design/work/nba/" target="_blank">object.design ↗</a>
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Design System</span>
+      <span class="tag">Color Tokens</span>
+      <span class="tag">Branded Experience</span>
+      <span class="tag">Roster Page</span>
+      <span class="tag">Team Theming</span>
+      <span class="tag">30 Teams / 1 System</span>
+      <span class="tag">Sponsorship</span>
+    </div>
+
+    <p class="note">
+      <strong>Context:</strong> Object + Engine Digital partnered with the NBA in 2022 to rebuild all 30 team websites with a single unified design system that adapts to each team's brand identity. The core challenge: one system, 30 color palettes, 30 brand personalities — consistency without uniformity.
+    </p>
+
+    <!-- Hero intro -->
+    <div class="section-header" style="margin-top:24px;"><h3>Hero — System Overview</h3></div>
+    <div class="grid-1">
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_intro.jpg" alt="NBA Team Sites — system overview" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- ─── BRANDED EXPERIENCE / COLOR TOKENS ─── -->
+    <div class="section-header"><h3>⬤ Branded Experience — Color Tokens per Team</h3></div>
+
+    <p class="note" style="margin-bottom:20px;">
+      <strong>The key insight:</strong> Each team's brand colors are mapped to a semantic token set — primary, secondary, surface, on-surface, accent — and then applied globally across every component. The result: the same template reads as a Lakers page (purple/gold), a Celtics page (green), a Hornets page (teal/purple). The design feels native to each team without rebuilding anything. This is exactly the token architecture relevant to Halo/OTT2.
+    </p>
+
+    <!-- Team home pages grid — the core branded expression -->
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-lakers.jpg" alt="Lakers home — purple/gold theme" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-bulls.jpg" alt="Bulls home — red/black theme" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-celticsgreen.jpg" alt="Celtics home — green theme" loading="lazy" />
+      </div>
+    </div>
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-300">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-hornets.jpg" alt="Hornets home — teal/purple theme" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-nets.jpg" alt="Nets home — black/white theme" loading="lazy" />
+      </div>
+      <div class="img-wrap h-300">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-bucks.jpg" alt="Bucks home — green/cream theme" loading="lazy" />
+      </div>
+    </div>
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-320">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_home-wolves.jpg" alt="Timberwolves home — navy/green theme" loading="lazy" />
+      </div>
+      <div class="img-wrap h-320">
+        <img src="https://object.design/content/uploads/2022/03/work_nba_contexthome-mobile.jpg" alt="Home page in mobile context" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Brand Assets GIF — THE TOKEN SYSTEM -->
+    <div class="section-header"><h3>Brand Assets — Token System in Motion</h3></div>
+    <div class="grid-2" style="gap:4px;">
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_brand-assets.gif" alt="Brand assets / color token system" loading="lazy" />
+      </div>
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_ui-elements.jpeg" alt="UI elements — component library" loading="lazy" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Token architecture:</strong> The GIF shows the design token system in action — the same component set cycling through different team themes. Every color, surface, and text role is a token, not a hardcoded value. Changing the team = swapping the token set. UI elements screen shows the component library: buttons, labels, score chips, nav items, cards — all inheriting from the token layer.
+    </p>
+
+    <div class="grid-1" style="margin-top:4px;">
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_pages.jpg" alt="All page types in the system" loading="lazy" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Page types:</strong> The system covers Home, Schedule, Scores, Standings, Roster, Stories, and Sponsorship pages — all rendered through the same token-driven component library.
+    </p>
+
+    <!-- ─── ROSTER PAGE ─── -->
+    <div class="section-header"><h3>⬤ Roster Page</h3></div>
+
+    <p class="note" style="margin-bottom:20px;">
+      <strong>Why it works:</strong> The Roster page is the most visually rich section — player photography is the primary content, and the token system lets each team's brand color become the backdrop. Player cards use a large cutout photo, name, position, stats. The mobile version adapts to a vertical scroll list. The "action" and "bio" variants show how a single player's card expands into a full profile.
+    </p>
+
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2022/03/work_nba_roster-mobile.jpg" alt="Roster page — mobile" loading="lazy" />
+      </div>
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2022/03/work_nba_roster-action.jpg" alt="Roster page — action view" loading="lazy" />
+      </div>
+    </div>
+    <div class="grid-2" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_roster-bio.jpg" alt="Roster page — player bio" loading="lazy" />
+      </div>
+      <div class="img-wrap h-400">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_roster-zoom.jpeg" alt="Roster page — player card zoom" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Courtside / Live Score -->
+    <div class="section-header"><h3>Courtside — Live Score & Pregame</h3></div>
+    <div class="grid-3" style="gap:4px; margin-bottom:4px;">
+      <div class="img-wrap h-280">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_courtside-pregame.jpg" alt="Courtside pregame" loading="lazy" />
+      </div>
+      <div class="img-wrap h-280">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_courtside-live.jpg" alt="Courtside live score" loading="lazy" />
+      </div>
+      <div class="img-wrap h-280">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_courtside-final.jpg" alt="Courtside final score" loading="lazy" />
+      </div>
+    </div>
+    <div class="grid-1" style="margin-bottom:4px;">
+      <div class="img-wrap h-360">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_courtside-UI.png" alt="Courtside UI components" loading="lazy" />
+      </div>
+    </div>
+    <p class="note">
+      <strong>Live states:</strong> The same score widget has three states — Pregame (schedule + ticket CTA), Live (real-time score with team colors pulsing), Final. All states use team color tokens so they feel native even in a shared widget. This is directly relevant to any Halo live-game or highlights experience.
+    </p>
+
+    <!-- Sponsors -->
+    <div class="section-header"><h3>Sponsorship Integration</h3></div>
+    <div class="grid-2" style="gap:4px;">
+      <div class="img-wrap h-360">
+        <img src="https://object.design/content/uploads/2022/03/work_nba_sponsors.jpg" alt="Sponsor integration" loading="lazy" />
+      </div>
+      <div class="img-wrap h-360">
+        <img src="https://object.design/content/uploads/2024/04/work_nba_story2.jpg" alt="Story / editorial page" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Design Notes -->
+    <div class="section-header"><h3>Design Notes — What's Worth Taking</h3></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px;">
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">✓ Color Token Architecture</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          One component library, 30 themes. Each team's palette is expressed as a semantic token layer (primary, secondary, surface, on-surface, accent). Zero custom code per team — only token values change. <strong style="color:#aaa;">For Halo:</strong> the same architecture can serve multiple sports, leagues, or broadcast partners from a single component system.
+        </p>
+      </div>
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">✓ Roster Page Pattern</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          Large player photography as primary visual anchor. Team brand color as background fill (not a decorative choice — it's structural). Name + position + number in high-contrast type. Card → expanded bio transition. <strong style="color:#aaa;">For Halo:</strong> strong model for any player-centric or talent-centric content surface.
+        </p>
+      </div>
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">✗ What Doesn't Apply</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          The typography and layout feel relatively safe/editorial — not as bold or energetic as the El Dorado NBA Top Shot work. The brand expression is restrained by NBA's official brand guidelines. Halo has more freedom to be expressive. Use the <em>architecture</em>, not the aesthetic.
+        </p>
+      </div>
+
+      <div style="background:#111; border:1px solid #1f1f1f; padding:20px; border-radius:4px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#4a7eff; margin-bottom:10px;">Live Score Widget Model</div>
+        <p style="font-size:12px; color:#888; line-height:1.7;">
+          Pregame → Live → Final state machine as a single themed widget. Each state has a distinct visual weight and CTA (Watch / Score / Stats). The widget inherits team color tokens so it always feels brand-native. Strong pattern for any OTT2 live game or event card component.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       REF 04 — Dark Gradient Glow Icons
+  ═══════════════════════════════════════════ -->
+
+  <hr class="divider" />
+
+  <div class="ref-block">
+    <div class="ref-meta">
+      <div class="ref-title">04 — Dark Gradient Glow Aesthetic</div>
+      <div class="ref-source">Source: shared reference — Bioimpedance / Charger / Heart Rate app icons</div>
+    </div>
+
+    <div class="section-header" style="margin-top:24px;"><h3>Reference Image</h3></div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+      <div style="position:relative;">
+        <img src="ref04a.jpg"
+             style="width:100%; border-radius:12px; display:block;"
+             onerror="this.style.display='none'; document.getElementById('ph04a').style.display='flex';" />
+        <div id="ph04a" style="display:none; width:100%; aspect-ratio:1/1; background:#111; border:1px dashed #333; border-radius:12px; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
+          <span style="font-size:32px;">🌌</span>
+          <span style="font-size:11px; color:#555; text-align:center;">Save image as<br><code style="color:#666;">ref04a.jpg</code><br>in the Halo folder</span>
+        </div>
+      </div>
+      <div style="background:#0f0f0f; border-radius:12px; padding:24px; display:flex; flex-direction:column; justify-content:center; gap:16px;">
+        <div>
+          <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#555; margin-bottom:6px;">What We See</div>
+          <div style="font-size:13px; color:#ccc; line-height:1.6;">
+            Three app icon/screen concepts on pure black. Each uses a luminous radial gradient to define a shape through glow — not through outlines or fills. The shapes exist only as <em>light emission</em> against void.
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#555; margin-bottom:6px;">Colors Observed</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:5px;"><div style="width:14px; height:14px; border-radius:50%; background:#00FF80;"></div><span style="font-size:11px; color:#888;">#00FF80 Acid Green</span></div>
+            <div style="display:flex; align-items:center; gap:5px;"><div style="width:14px; height:14px; border-radius:50%; background:#00B0A0;"></div><span style="font-size:11px; color:#888;">#00B0A0 Teal</span></div>
+            <div style="display:flex; align-items:center; gap:5px;"><div style="width:14px; height:14px; border-radius:50%; background:#3B6AFF;"></div><span style="font-size:11px; color:#888;">#3B6AFF Electric Blue</span></div>
+            <div style="display:flex; align-items:center; gap:5px;"><div style="width:14px; height:14px; border-radius:50%; background:#FFD000;"></div><span style="font-size:11px; color:#888;">#FFD000 Volt Yellow</span></div>
+            <div style="display:flex; align-items:center; gap:5px;"><div style="width:14px; height:14px; border-radius:50%; background:#FF1A88;"></div><span style="font-size:11px; color:#888;">#FF1A88 Hot Pink</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Design Technique — Glow as Form</h3></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:24px;">
+      <div style="background:#0f0f0f; border-radius:10px; padding:20px; border-top: 2px solid #00FF80;">
+        <div style="font-size:20px; margin-bottom:10px;">🌱</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">Bioimpedance</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">Large half-sphere, top-heavy. Multi-layer aurora: acid green center → teal mid-ring → deep blue outer haze. The "planet from space" energy. Bottom strip glows blue like an atmosphere.</div>
+      </div>
+      <div style="background:#0f0f0f; border-radius:10px; padding:20px; border-top: 2px solid #FFD000;">
+        <div style="font-size:20px; margin-bottom:10px;">⚡</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">Charger</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">Lightning bolt as a gradient object — volt yellow at tip, gradients to green at base. Defined by contrast against pure black. No border, no shadow. Just colored light.</div>
+      </div>
+      <div style="background:#0f0f0f; border-radius:10px; padding:20px; border-top: 2px solid #FF1A88;">
+        <div style="font-size:20px; margin-bottom:10px;">❤️</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">Heart Rate</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">Heart shape as cutout from solid black. Magenta→red glow radiates from the edge inward. Negative space as the subject. Typography is muted #888, never competes with the shape.</div>
+      </div>
+    </div>
+
+    <div class="section-header"><h3>UX Insights — Relevance for Halo / OTT2</h3></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:8px;">
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #6C63FF;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6C63FF; margin-bottom:8px;">① Team Color Glow on Player Cards</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">Rather than filling a player card with flat team colors, use them as <strong style="color:#ccc;">luminous glow layers</strong> — team's primary color emitted from behind the player silhouette. This is exactly the "color token per team" approach Isaac wants, but expressed cinematically.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #00BFA5;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#00BFA5; margin-bottom:8px;">② Drop Moment = Glow Trigger</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">When a <strong style="color:#ccc;">highlight drops</strong> or an athlete is claimed, the card could pulse with a radial glow in team color — exactly the energy of the "Charger" icon. The glow intensity = moment significance. Pure black → burst of color → settles.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #F59E0B;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#F59E0B; margin-bottom:8px;">③ Athlete Silhouette as Negative Space</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">The "Heart Rate" technique — player silhouette as a <strong style="color:#ccc;">cutout from black</strong>, with team color glowing from the edges inward. This makes an unclaimed athlete feel like a void waiting to be filled, and a claimed one feels like they're radiating energy.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #EF4444;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#EF4444; margin-bottom:8px;">④ Dark Mode = Default, Not Toggle</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">This aesthetic only works on <strong style="color:#ccc;">true black backgrounds</strong>. The glow technique collapses on white or even dark gray. This is the strongest argument for Isaac/Roy's position: dark mode isn't a preference, it's a design precondition.</div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+      <span class="tag">glow gradient</span>
+      <span class="tag">dark mode native</span>
+      <span class="tag">luminous form</span>
+      <span class="tag">team color tokens</span>
+      <span class="tag">negative space</span>
+      <span class="tag">drop moment animation</span>
+      <span class="tag">premium dark aesthetic</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       REF 05 — Dark Sports App UI (Dribbble concept)
+  ═══════════════════════════════════════════ -->
+
+  <hr class="divider" />
+
+  <div class="ref-block">
+    <div class="ref-meta">
+      <div class="ref-title">05 — Dark Sports App UI — Premier League Concept</div>
+      <div class="ref-source">Source: shared reference — Premier League / fan engagement app concept (Dribbble-style)</div>
+    </div>
+
+    <div class="section-header" style="margin-top:24px;"><h3>Reference Image — 4-Screen Composite</h3></div>
+
+    <div style="position:relative; margin-bottom:24px;">
+      <img src="ref05.jpg"
+           style="width:100%; border-radius:12px; display:block;"
+           onerror="this.style.display='none'; document.getElementById('ph05').style.display='flex';" />
+      <div id="ph05" style="display:none; width:100%; aspect-ratio:16/7; background:#111; border:1px dashed #333; border-radius:12px; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
+        <span style="font-size:32px;">📱</span>
+        <span style="font-size:11px; color:#555; text-align:center;">Save image as<br><code style="color:#666;">ref05.jpg</code><br>in the Halo folder</span>
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Screen-by-Screen Breakdown</h3></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; margin-bottom:28px;">
+      <div style="background:#0f0f0f; border-radius:10px; padding:16px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#3B82F6; margin-bottom:8px;">Screen 1</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">Live Match View</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">Score widget at top, tabs (Live / Statistics / Line-Up / Stats), embedded video player, then statistical breakdown with team percentage bars. Clean hierarchy: score → stream → data.</div>
+      </div>
+      <div style="background:#0f0f0f; border-radius:10px; padding:16px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#8B5CF6; margin-bottom:8px;">Screen 2</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">Discover Feed</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">TikTok-style full-screen vertical video. Athlete featured prominently, engagement metrics (250 comments, 2.24k likes, 200 saves) on right rail. Discover / Following toggle at top — exactly Isaac's "drop loop" UX.</div>
+      </div>
+      <div style="background:#0f0f0f; border-radius:10px; padding:16px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#10B981; margin-bottom:8px;">Screen 3</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">League Selection</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">Onboarding/preference screen. Team logo grid, search bar, "Select Your Favorite Sports Leagues" headline. Clean, scannable, no clutter. Maps perfectly to IBBA's multi-sport direction.</div>
+      </div>
+      <div style="background:#0f0f0f; border-radius:10px; padding:16px;">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#F59E0B; margin-bottom:8px;">Screen 4</div>
+        <div style="font-size:12px; font-weight:600; color:#ccc; margin-bottom:8px;">User Profile</div>
+        <div style="font-size:12px; color:#666; line-height:1.6;">3-stat header (Post Views 32K / Items Found 28 / My Games 16), then a clean settings menu. The stats gamify the profile without overcomplicating it — a model for the athlete-claiming profile.</div>
+      </div>
+    </div>
+
+    <div class="section-header"><h3>Color Palette Observed</h3></div>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;">
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#0B1628; border:1px solid #222; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#0B1628<br>Primary BG</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#162036; border:1px solid #222; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#162036<br>Card BG</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#1E3A5F; border:1px solid #222; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#1E3A5F<br>Surface</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#4B7BF5; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#4B7BF5<br>Accent Blue</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#1DB954; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#1DB954<br>Live Green</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#EF4444; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#EF4444<br>Away/Loss</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#FFFFFF; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#FFFFFF<br>Primary Text</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:52px; height:52px; border-radius:8px; background:#8899AA; margin-bottom:6px;"></div>
+        <div style="font-size:10px; color:#555;">#8899AA<br>Secondary</div>
+      </div>
+    </div>
+
+    <div class="section-header"><h3>UX Insights — Relevance for Halo / OTT2</h3></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:8px;">
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #3B82F6;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#3B82F6; margin-bottom:8px;">① Live Match Tab Pattern</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">The Live / Statistics / Line-Up / Stats tab bar directly maps to Halo's game companion view. The "Join ›" CTA inside the score widget is a clean model for the <strong style="color:#ccc;">live fan engagement trigger</strong> — enter the game context with one tap.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #8B5CF6;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#8B5CF6; margin-bottom:8px;">② Discover / Following = The Drop Loop</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">The TikTok-style vertical feed with Discover + Following toggle is exactly Isaac's engagement loop made real. <strong style="color:#ccc;">Discover</strong> = algorithm surfaces highlights. <strong style="color:#ccc;">Following</strong> = graph-personalized content. Both needed for Halo's identity graph to pay off.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #10B981;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#10B981; margin-bottom:8px;">③ Onboarding via League Selection</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">The league selection grid is the <strong style="color:#ccc;">first graph enrichment moment</strong> — before users see content, they signal their preferences. This feeds the identity graph immediately. IBBA onboarding should mirror this: pick your teams first, then everything becomes personalized.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #F59E0B;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#F59E0B; margin-bottom:8px;">④ Profile as Gamified Stats Dashboard</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">Post Views / Items Found / My Games creates a <strong style="color:#ccc;">light gamification layer</strong> without leaderboards. For Halo: "Highlights Viewed / Players Claimed / Games Attended" — the athlete claiming mechanic expressed as a user identity, not just a feature.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #6C63FF; grid-column: 1 / -1;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6C63FF; margin-bottom:8px;">⑤ Deep Navy vs. Pure Black — A Critical Distinction</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">This app uses <strong style="color:#ccc;">#0B1628 (deep navy)</strong> rather than pure black — warmer, more "premium sports broadcast" feel vs. the cold, editorial black of REF 04. For Halo, this is a brand decision: if the team color tokens inject warmth, deep navy BG works. If team colors are the only warmth, pure black keeps the glow effect intact. Both are valid — they're different product personalities.</div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+      <span class="tag">dark navy theme</span>
+      <span class="tag">vertical feed</span>
+      <span class="tag">Discover / Following toggle</span>
+      <span class="tag">live match companion</span>
+      <span class="tag">gamified profile</span>
+      <span class="tag">league onboarding</span>
+      <span class="tag">identity graph touchpoint</span>
+      <span class="tag">tab navigation</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       REF 06 — Drop Reveal: Stacked Card Fan (Motion Design Concept)
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="ref-card">
+    <div class="section-header">
+      <span class="ref-badge">06</span>
+      <div>
+        <h2 class="section-title">Drop Reveal — Stacked Card Fan</h2>
+        <p class="section-meta">Motion Design Concept · "ALL PURPOSE / ASPECT TEST" · Pinterest</p>
+      </div>
+    </div>
+
+    <!-- Video + annotation row -->
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-bottom:28px; align-items:start;">
+
+      <!-- Video embed -->
+      <div style="position:relative; background:#000; border-radius:10px; overflow:hidden; aspect-ratio:1/1;">
+        <video
+          src="ref06.mp4"
+          autoplay loop muted playsinline
+          style="width:100%; height:100%; object-fit:cover; display:block;"
+        ></video>
+        <!-- HUD label overlay -->
+        <div style="position:absolute; top:10px; left:10px; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:#ffffff55; font-family:monospace;">ALL PURPOSE</div>
+        <div style="position:absolute; bottom:10px; right:10px; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:#ffffff55; font-family:monospace;">ASPECT TEST</div>
+      </div>
+
+      <!-- Motion breakdown -->
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#555; margin-bottom:2px;">Motion Breakdown</div>
+
+        <div style="background:#111; border-radius:8px; padding:14px; border-left:3px solid #FF4B4B;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#FF4B4B; margin-bottom:6px;">① Stack State — Entry</div>
+          <div style="font-size:12px; color:#888; line-height:1.6;">Cards sit flat and stacked — only the top card (entry thumbnail) is visible. This is the resting state the user taps into.</div>
+        </div>
+
+        <div style="background:#111; border-radius:8px; padding:14px; border-left:3px solid #FF9A3C;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#FF9A3C; margin-bottom:6px;">② Fan Out — Reveal</div>
+          <div style="font-size:12px; color:#888; line-height:1.6;">Cards spread from center-bottom pivot, rotating in 3D space in both directions — like a hand of playing cards opening. Each card is a content artefact: a highlight screenshot, an athlete poster, a stat card.</div>
+        </div>
+
+        <div style="background:#111; border-radius:8px; padding:14px; border-left:3px solid #4BFF91;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#4BFF91; margin-bottom:6px;">③ Hold — Read the Room</div>
+          <div style="font-size:12px; color:#888; line-height:1.6;">Fan is held open long enough for the eye to scan all cards. User perceives depth and richness — "there is a lot here." This is the value moment.</div>
+        </div>
+
+        <div style="background:#111; border-radius:8px; padding:14px; border-left:3px solid #4B9FFF;">
+          <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#4B9FFF; margin-bottom:6px;">④ Collapse — Choose or Enter</div>
+          <div style="font-size:12px; color:#888; line-height:1.6;">Cards snap back to stack. The thumbnail is now the "confirmed" entry point. Tap it to enter the Drop/Story.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Camera HUD aesthetic note -->
+    <div style="background:#0d0d0d; border:1px solid #222; border-radius:10px; padding:18px; margin-bottom:24px; display:flex; gap:16px; align-items:flex-start;">
+      <div style="font-size:22px; flex-shrink:0;">⊹</div>
+      <div>
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#888; margin-bottom:6px;">Camera HUD Overlay — Aesthetic Language</div>
+        <div style="font-size:12px; color:#666; line-height:1.7;">The original video uses corner brackets, crosshairs, a progress bar, and monospace labels ("ALL PURPOSE", "ASPECT TEST") — a techy, editorial, broadcast-adjacent aesthetic. For Halo this overlay layer is optional but worth noting: it reads as "professional sports production system," which reinforces the platform-as-infrastructure narrative Isaac is building. Could appear during loading/processing states.</div>
+      </div>
+    </div>
+
+    <!-- UX Insights grid -->
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-bottom:24px;">
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #A855F7;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#A855F7; margin-bottom:8px;">① Drop Reveal — Content Richness Signal</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">The fan-out communicates "this Drop contains multitudes" before the user commits to entering. Unlike NBA Top Shot's single dramatic reveal, this shows a collection — highlights, posters, stats — closer to the NXT Keynote poster wall aesthetic. The imperfection is the point: it's generative, not manufactured.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #F59E0B;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#F59E0B; margin-bottom:8px;">② NXT Poster Format Connection</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">Each fanned card can be a full-bleed athlete poster — the kind Halo generates automatically from Pixellot highlight clips. Fan-out becomes a mini NXT-style gallery: multiple shots of the same player moment from different frames, shown simultaneously before the user picks their entry.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #10B981;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#10B981; margin-bottom:8px;">③ Identity Graph Trigger</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">Which card the user's eye lands on during the hold state is a behavioral signal — even without a tap. Eye-dwell or hover data on the fanned cards feeds Isaac's identity graph: the user preferred the stat card over the highlight clip. This is a micro-interaction that enriches the Drop Loop passively.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #EC4899;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#EC4899; margin-bottom:8px;">④ Stack State as Scroll Unit</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">In the feed/Discover screen, each Drop appears as a stack (not yet fanned). The slight card-edge peeking from behind the thumbnail is enough to signal depth. The fan animates on hover or on scroll-pause — no tap required. This preserves feed momentum while still teasing richness.</div>
+      </div>
+
+      <div style="background:#0f0f0f; border-radius:10px; padding:18px; border-left: 3px solid #3B82F6; grid-column: 1 / -1;">
+        <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#3B82F6; margin-bottom:8px;">⑤ Less Polished = More Authentic — The Halo Advantage</div>
+        <div style="font-size:12px; color:#888; line-height:1.6;">NBA Top Shot's reveal is a one-shot cinematic moment designed for a single collectible. Halo Drops are recurring, algorithmic, and personalized — a cinematic reveal would feel fake after the third time. The card-fan is repeatable, fast (&lt;1s), and scales to any content type. Its slight roughness signals "this was made for you, now," not "this was produced for everyone." That authenticity is a product differentiator, not a limitation.</div>
+      </div>
+
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+      <span class="tag">Drop reveal</span>
+      <span class="tag">stacked cards</span>
+      <span class="tag">card fan animation</span>
+      <span class="tag">content richness signal</span>
+      <span class="tag">NXT poster format</span>
+      <span class="tag">identity graph trigger</span>
+      <span class="tag">player highlights</span>
+      <span class="tag">camera HUD aesthetic</span>
+      <span class="tag">micro-interaction</span>
+      <span class="tag">Drop Loop</span>
+    </div>
+  </div>
+
+
+  <footer>
+    Halo / OTT2 — Visual References &nbsp;·&nbsp; Last updated April 2026
+  </footer>
+
+</body>
+</html>
