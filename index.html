@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>HALO — Preview v3</title>
+<title>HALO — Preview v3.1</title>
+<!-- ============================================================
+     OG / SOCIAL META SPEC (Story 3.8 — for Nuxt useHead in real build)
+     The prototype is a single-file HTML so all routes share these tags.
+     In the real Vue/Nuxt app, each event + athlete page sets its own
+     og:title / og:image / og:description via useHead() in the route component.
+     Engineering: see Story 3.8 ACs for per-route requirements.
+     ============================================================ -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="HALO" />
+<meta property="og:title" content="HALO — Live youth basketball, your highlights" />
+<meta property="og:description" content="Auto-clipped basketball highlights for players, parents, and coaches. Watch your moments and your team's drops." />
+<meta property="og:url" content="https://yonipixellot.github.io/halo-preview/" />
+<meta property="og:image" content="https://yonipixellot.github.io/halo-preview/og-default.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="HALO — Live youth basketball, your highlights" />
+<meta name="twitter:description" content="Auto-clipped basketball highlights for players, parents, and coaches." />
 <script>
   (function(){var w=console.warn;console.warn=function(){var m=arguments[0]||"";if(typeof m==="string"&&m.indexOf("cdn.tailwindcss.com")>=0)return;w.apply(console,arguments);};})();
   window.addEventListener('error', function(e) {
@@ -1462,6 +1478,10 @@ const initialState = {
   // null | 'content-unavailable' | 'stream-unavailable' | 'drm'
   pendingAuthIntent: null,
   // { action: 'follow_player'|'follow_team'|'watch_locked'|'add_to_playlist', label, returnScreen, payload }
+  hlViewMode: 'mobile',
+  // 'mobile' | 'web' — UX-DR10/DR11 explicit variants for HL screens
+  emailVerified: true,
+  // false → SideMenu shows verify-email banner (Menu_Before verification state)
   identityState: 'first',
   // 'first' | 'today' | null
   identityLog: [{
@@ -1681,6 +1701,10 @@ function appReducer(s, action) {
       return { ...s, pendingAuthIntent: action.intent };
     case 'CLEAR_PENDING_AUTH_INTENT':
       return { ...s, pendingAuthIntent: null };
+    case 'SET_HL_VIEW_MODE':
+      return { ...s, hlViewMode: action.mode };
+    case 'SET_EMAIL_VERIFIED':
+      return { ...s, emailVerified: action.verified };
     case 'SIGN_IN': {
       // If we have a pending intent (guest → registered), restore screen + apply it
       const intent = s.pendingAuthIntent;
@@ -2693,9 +2717,9 @@ const ErrorOverlay = ({
     },
     'drm': {
       icon: '🔒',
-      title: 'This content needs protected playback',
-      body: "Your device doesn't support the secure playback this stream requires.",
-      action: 'OK'
+      title: 'This content requires a device that supports protected playback',
+      body: "Your current device doesn't support the secure playback (Widevine L1/L3 or FairPlay) this stream requires. Try opening on a different phone, tablet, or browser.",
+      action: 'Got it'
     }
   }[s.errorState];
   if (!content) return null;
@@ -2889,11 +2913,57 @@ const PushedRouter = ({
         s: s,
         dispatch: dispatch
       });
+    case 'event-not-found':
+      return /*#__PURE__*/React.createElement(NotFoundScreen, {
+        kind: 'event',
+        refId: screen.refId,
+        dispatch: dispatch
+      });
     default:
-      return /*#__PURE__*/React.createElement("div", {
-        className: "p-8"
-      }, /*#__PURE__*/React.createElement(Caption, null, "Unknown: ", screen.name));
+      return /*#__PURE__*/React.createElement(NotFoundScreen, {
+        kind: 'page',
+        refId: screen.name,
+        dispatch: dispatch
+      });
   }
+};
+
+/* ===== NOT FOUND (Story 3.7 — friendly deep-link 404) ===== */
+const NotFoundScreen = ({ kind, refId, dispatch }) => {
+  const copy = kind === 'event' ? {
+    title: "We couldn't find that event",
+    body: "The link you followed may have expired, or the event was unpublished by its tenant. Try one of the routes below or head home."
+  } : {
+    title: "Page not found",
+    body: "We couldn't load that page. It may have moved, been removed, or never existed."
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "bg-white anim-fade min-h-full"
+  }, /*#__PURE__*/React.createElement(BackBar, {
+    onBack: () => dispatch({ type: 'POP' }),
+    title: kind === 'event' ? '404 · Event' : '404'
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "px-6 pt-10 pb-6 flex flex-col items-center text-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-20 h-20 border-[2px] border-black bg-zinc-100 hatch flex items-center justify-center mb-4"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[28px] font-black"
+  }, "404")), /*#__PURE__*/React.createElement("div", {
+    className: "text-[18px] font-extrabold leading-tight mb-2"
+  }, copy.title), /*#__PURE__*/React.createElement(Caption, {
+    className: "!normal-case !tracking-normal text-zinc-600 block mb-4 max-w-[280px]",
+    style: { fontSize: 12, letterSpacing: 0, lineHeight: 1.45 }
+  }, copy.body), refId && /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[10px] tracking-widest uppercase text-zinc-400 mb-6"
+  }, "REF · ", refId), /*#__PURE__*/React.createElement("div", {
+    className: "w-full space-y-2"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch({ type: 'POP' }),
+    className: "w-full py-3 border-[1.5px] border-black bg-black text-white font-mono text-[11px] tracking-[0.15em] uppercase font-bold"
+  }, "← Go back"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch({ type: 'SET_TAB', tab: 'home' }),
+    className: "w-full py-3 border-[1.5px] border-black bg-white font-mono text-[11px] tracking-[0.15em] uppercase font-bold"
+  }, "Take me home"))));
 };
 const BottomNav = ({
   s,
@@ -3884,7 +3954,17 @@ const SideMenu = ({
     className: "flex-1 min-w-0"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[13px] font-bold truncate"
-  }, s.persona === 'coach' ? 'Coach Miles' : 'Tal Weiss'), /*#__PURE__*/React.createElement(Caption, null, "tal@example.com"))), isGuest && /*#__PURE__*/React.createElement("div", {
+  }, s.persona === 'coach' ? 'Coach Miles' : 'Tal Weiss'), /*#__PURE__*/React.createElement(Caption, null, "tal@example.com"))), !isGuest && !s.emailVerified && /*#__PURE__*/React.createElement("div", {
+    className: "px-4 py-3 border-b-[1.5px] border-black bg-yellow-50"
+  }, /*#__PURE__*/React.createElement(Label, {
+    className: "text-zinc-700 block mb-1"
+  }, "VERIFY YOUR EMAIL"), /*#__PURE__*/React.createElement(Caption, {
+    className: "!normal-case !tracking-normal text-zinc-700 block mb-2",
+    style: { fontSize: 11, letterSpacing: 0 }
+  }, "Some features stay locked until you confirm your email."), /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch({ type: 'TOAST', toast: { msg: 'Verification email sent · check your inbox' } }),
+    className: "w-full py-2 border-[1.5px] border-black bg-white font-mono text-[10px] tracking-[0.12em] uppercase font-bold"
+  }, "Resend verification link")), isGuest && /*#__PURE__*/React.createElement("div", {
     className: "px-4 py-4 border-b-[1.5px] border-black bg-zinc-100 hatch"
   }, /*#__PURE__*/React.createElement(Label, {
     className: "text-zinc-700 block mb-2"
@@ -4038,7 +4118,8 @@ const Onboarding = ({
     chosen: chosenTeams,
     setChosen: setChosenTeams,
     onBack: () => setStep('persona'),
-    onNext: () => setStep('players')
+    onNext: () => setStep('players'),
+    onSkip: () => dispatch({ type: 'COMPLETE_ONBOARDING' })
   }), step === 'players' && /*#__PURE__*/React.createElement(PlayersStep, {
     chosenTeams: chosenTeams,
     chosenPlayers: chosenPlayers,
@@ -4046,7 +4127,8 @@ const Onboarding = ({
     togglePlayer: togglePlayer,
     handleNotifyToggle: handleNotifyToggle,
     onBack: () => setStep('teams'),
-    onFinish: finish
+    onFinish: finish,
+    onSkip: () => dispatch({ type: 'COMPLETE_ONBOARDING' })
   }), permissionSheet && /*#__PURE__*/React.createElement(PermissionSheet, {
     onAllow: grantPermission,
     onDeny: denyPermission
@@ -4099,11 +4181,14 @@ const TeamsStep = ({
   chosen,
   setChosen,
   onBack,
-  onNext
+  onNext,
+  onSkip
 }) => {
   const [q, setQ] = useState('');
   const filtered = TEAMS_DB.filter(t => !q || (t.name + t.org).toLowerCase().includes(q.toLowerCase()));
   const toggle = id => setChosen(chosen.includes(id) ? chosen.filter(x => x !== id) : [...chosen, id]);
+  const noLeague = TEAMS_DB.length === 0;
+  const noResults = !noLeague && filtered.length === 0;
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BackBar, {
     onBack: onBack,
     title: "Pick teams"
@@ -4120,7 +4205,19 @@ const TeamsStep = ({
     className: "w-full mt-3 px-3 py-2.5 border-[1.5px] border-black text-[12px] outline-none"
   })), /*#__PURE__*/React.createElement("div", {
     className: "px-5 space-y-2 pb-32"
-  }, filtered.map(t => {
+  }, noLeague && /*#__PURE__*/React.createElement("div", {
+    className: "border-[1.5px] border-dashed border-black p-5 text-center"
+  }, /*#__PURE__*/React.createElement(Label, {
+    className: "text-zinc-700 block mb-1"
+  }, "No league configured"), /*#__PURE__*/React.createElement(Caption, {
+    className: "!normal-case !tracking-normal text-zinc-600 block",
+    style: { fontSize: 11.5, letterSpacing: 0 }
+  }, "Your tenant hasn't set up a league yet — skip for now and your admin can add teams later.")), noResults && /*#__PURE__*/React.createElement("div", {
+    className: "border-[1.5px] border-dashed border-black p-4 text-center"
+  }, /*#__PURE__*/React.createElement(Caption, {
+    className: "!normal-case !tracking-normal text-zinc-600 block",
+    style: { fontSize: 11.5, letterSpacing: 0 }
+  }, "No teams match “", q, "”")), filtered.map(t => {
     const isOn = chosen.includes(t.id);
     return /*#__PURE__*/React.createElement("button", {
       key: t.id,
@@ -4142,12 +4239,15 @@ const TeamsStep = ({
       className: "text-[10px]"
     }, "\u2713")));
   })), /*#__PURE__*/React.createElement("div", {
-    className: "absolute bottom-0 inset-x-0 p-4 bg-white border-t-[1.5px] border-black"
+    className: "absolute bottom-0 inset-x-0 p-4 bg-white border-t-[1.5px] border-black space-y-2"
   }, /*#__PURE__*/React.createElement("button", {
     disabled: !chosen.length,
     onClick: onNext,
     className: cls('w-full py-3 border-[1.5px] border-black font-mono text-[11px] tracking-[0.15em] uppercase font-bold', chosen.length ? 'bg-black text-white' : 'bg-zinc-100 text-zinc-400')
-  }, "Continue \xB7 ", chosen.length, " ", chosen.length === 1 ? 'team' : 'teams')));
+  }, "Continue \xB7 ", chosen.length, " ", chosen.length === 1 ? 'team' : 'teams'), /*#__PURE__*/React.createElement("button", {
+    onClick: onSkip,
+    className: "w-full py-2 font-mono text-[10px] tracking-[0.12em] uppercase text-zinc-500"
+  }, "Skip for now")));
 };
 const PlayersStep = ({
   chosenTeams,
@@ -4156,7 +4256,8 @@ const PlayersStep = ({
   togglePlayer,
   handleNotifyToggle,
   onBack,
-  onFinish
+  onFinish,
+  onSkip
 }) => {
   const teams = TEAMS_DB.filter(t => chosenTeams.includes(t.id));
   const selectedCount = Object.values(chosenPlayers).filter(Boolean).length;
@@ -4213,12 +4314,15 @@ const PlayersStep = ({
       className: "text-[12px]"
     }, notifOn ? '◉' : '○')));
   }))))), /*#__PURE__*/React.createElement("div", {
-    className: "absolute bottom-0 inset-x-0 p-4 bg-white border-t-[1.5px] border-black"
+    className: "absolute bottom-0 inset-x-0 p-4 bg-white border-t-[1.5px] border-black space-y-2"
   }, /*#__PURE__*/React.createElement("button", {
     disabled: !selectedCount,
     onClick: onFinish,
     className: cls('w-full py-3 border-[1.5px] border-black font-mono text-[11px] tracking-[0.15em] uppercase font-bold', selectedCount ? 'bg-black text-white' : 'bg-zinc-100 text-zinc-400')
-  }, "Done \xB7 Following ", selectedCount, notifyOn > 0 && ` · ◉ ${notifyOn}`)));
+  }, "Done \xB7 Following ", selectedCount, notifyOn > 0 && ` · ◉ ${notifyOn}`), /*#__PURE__*/React.createElement("button", {
+    onClick: onSkip,
+    className: "w-full py-2 font-mono text-[10px] tracking-[0.12em] uppercase text-zinc-500"
+  }, "Skip for now")));
 };
 const PermissionSheet = ({
   onAllow,
@@ -7061,7 +7165,7 @@ const LiveGameScreen = ({
   }, /*#__PURE__*/React.createElement("div", {
     className: "w-1 h-1 rounded-full bg-white anim-pulse"
   }), t('goLive')), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setReconnecting(true),
+    onClick: startReconnect,
     className: "px-2 py-1 border-[1.5px] border-black bg-white font-mono text-[9px] tracking-widest uppercase font-bold",
     title: "simulate reconnect"
   }, "\u27F3"), /*#__PURE__*/React.createElement("button", {
@@ -7751,13 +7855,21 @@ const GameHighlightsScreen = ({
   const game = findGame(id) || SEED_GAMES[0];
   const moments = SEED_MOMENTS.filter(m => m.gameId === game.id);
   const cur = findMoment(hlId) || moments[0];
+  const isWeb = s.hlViewMode === 'web';
   return /*#__PURE__*/React.createElement("div", {
     className: "bg-white anim-fade min-h-full"
   }, /*#__PURE__*/React.createElement(BackBar, {
     onBack: () => dispatch({
       type: 'POP'
     }),
-    title: "Game highlight"
+    title: "Game highlight",
+    right: /*#__PURE__*/React.createElement("div", {
+      className: "flex border border-black overflow-hidden"
+    }, ['mobile', 'web'].map(m => /*#__PURE__*/React.createElement("button", {
+      key: m,
+      onClick: () => dispatch({ type: 'SET_HL_VIEW_MODE', mode: m }),
+      className: cls('px-1.5 py-0.5 font-mono text-[8.5px] tracking-widest uppercase font-bold', s.hlViewMode === m ? 'bg-black text-white' : 'bg-white')
+    }, m)))
   }), /*#__PURE__*/React.createElement("div", {
     className: "relative w-full aspect-[16/9] border-b-[1.5px] border-black bg-zinc-100 hatch"
   }, /*#__PURE__*/React.createElement("div", {
@@ -7779,11 +7891,11 @@ const GameHighlightsScreen = ({
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[15px] font-extrabold"
   }, cur?.title), /*#__PURE__*/React.createElement(Caption, null, game.home, " vs ", game.away, " \xB7 ", cur?.sub)), /*#__PURE__*/React.createElement("div", {
-    className: "px-4 mt-2"
+    className: "px-4 mt-2 pb-4"
   }, /*#__PURE__*/React.createElement(Label, {
     className: "text-zinc-500 mb-2 block"
-  }, "ALL HIGHLIGHTS \xB7 ", moments.length), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-1.5"
+  }, "ALL HIGHLIGHTS \xB7 ", moments.length, isWeb && " · web side panel"), /*#__PURE__*/React.createElement("div", {
+    className: cls(isWeb ? 'grid grid-cols-2 gap-1.5' : 'space-y-1.5')
   }, moments.map(m => /*#__PURE__*/React.createElement("button", {
     key: m.id,
     onClick: () => dispatch({
@@ -7822,6 +7934,7 @@ const PlayerHighlightsScreen = ({
     name: 'Tal',
     initial: 'T'
   };
+  const isWeb = s.hlViewMode === 'web';
   // group by player
   const groups = {};
   moments.forEach(m => {
@@ -7830,6 +7943,13 @@ const PlayerHighlightsScreen = ({
   return /*#__PURE__*/React.createElement("div", {
     className: "bg-white anim-fade min-h-full"
   }, /*#__PURE__*/React.createElement(BackBar, {
+    right: /*#__PURE__*/React.createElement("div", {
+      className: "flex border border-black overflow-hidden"
+    }, ['mobile', 'web'].map(m => /*#__PURE__*/React.createElement("button", {
+      key: m,
+      onClick: () => dispatch({ type: 'SET_HL_VIEW_MODE', mode: m }),
+      className: cls('px-1.5 py-0.5 font-mono text-[8.5px] tracking-widest uppercase font-bold', s.hlViewMode === m ? 'bg-black text-white' : 'bg-white')
+    }, m))),
     onBack: () => dispatch({
       type: 'POP'
     }),
@@ -8647,19 +8767,23 @@ const LanguagePickerScreen = ({
 const INFO_CONTENT = {
   about: {
     title: 'About HALO',
-    body: 'HALO turns auto-captured basketball footage into personalised highlight reels for players, parents, and coaches. Built on the Pixellot OTT platform.'
+    updated: 'Apr 2026',
+    body: 'HALO turns auto-captured basketball footage into personalised highlight reels for players, parents, and coaches.\n\nEvery game captured by a Pixellot camera flows through our auto-clipping pipeline. The system tags each clip to the right player on the floor, so when you open the app you see your moments, not someone else\'s.\n\nBuilt on the Pixellot OTT platform · designed for clubs, schools, and academies.'
   },
   faq: {
     title: 'FAQ',
-    body: 'Q. How are my moments captured?\nA. Pixellot cameras film every play; auto-clipping picks the relevant ones.\n\nQ. Can I edit them?\nA. Yes — Make a Moment lets you trim and save to a playlist.'
+    updated: 'Apr 2026',
+    body: 'Q. How are my moments captured?\nA. Pixellot cameras film every play. Our auto-clipping system identifies meaningful moments — scores, defensive stops, key passes — and tags them to the players involved.\n\nQ. Can I edit them?\nA. Yes — open any moment and tap "Make a Moment" to trim the clip and save it to a personal playlist.\n\nQ. Who can see my drops?\nA. By default, only you. You can share an individual moment via link, or make your athlete profile public.\n\nQ. What about privacy?\nA. We collect the minimum needed to operate the service. See the Privacy page for full details, or delete your account anytime from Account Settings.\n\nQ. How do I get a coach to review my training clip?\nA. Coaches review player-uploaded clips from training, gym, or road sessions. Game footage is auto-approved and skips the review queue.'
   },
   privacy: {
-    title: 'Privacy',
-    body: 'We collect the minimum personal data needed to operate the service. You can delete your account at any time. See our Data Processing Addendum for details.'
+    title: 'Privacy Policy',
+    updated: 'Apr 2026',
+    body: 'Your privacy is important to us. This document describes what we collect, why, and how to control it.\n\n• What we collect: name, email, follows, watch history.\n• What we don\'t collect: location, contacts, biometric data.\n• Where it\'s stored: encrypted at rest, isolated per tenant.\n• Your rights (GDPR): you can export your data or request deletion at any time. Deletion completes within 30 days.\n• Children: HALO is designed for athletes 13 and over. Parents managing kid accounts must verify ownership.\n\nFull Data Processing Addendum available on request.'
   },
   terms: {
-    title: 'Terms',
-    body: 'By using HALO you agree to our Terms of Service. Don\'t do illegal stuff. Don\'t share copyrighted content. Be excellent to each other.'
+    title: 'Terms of Service',
+    updated: 'Apr 2026',
+    body: 'By using HALO you agree to these terms.\n\n1. Be lawful. Don\'t use HALO to do illegal things.\n2. Respect copyright. Footage rights belong to the capturing club. Don\'t share copyrighted content outside the platform.\n3. Be excellent. No harassment, no targeted attacks. Coach reviews exist for a reason.\n4. We may update streams, features, or pricing — we\'ll tell you in advance.\n5. We may suspend accounts that violate these terms.\n\nFull legal terms available on request from support.'
   }
 };
 const InfoPageScreen = ({
@@ -8682,9 +8806,11 @@ const InfoPageScreen = ({
   }), /*#__PURE__*/React.createElement("div", {
     className: "px-4 pt-4 pb-4 border-b-[1.5px] border-black"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[20px] font-extrabold mb-2"
-  }, content.title), /*#__PURE__*/React.createElement("div", {
-    className: "text-[12px] leading-relaxed text-zinc-800 whitespace-pre-line"
+    className: "text-[20px] font-extrabold mb-1"
+  }, content.title), content.updated && /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9.5px] tracking-widest uppercase text-zinc-500 block mb-3"
+  }, "Last updated · ", content.updated), /*#__PURE__*/React.createElement("div", {
+    className: "text-[12.5px] leading-relaxed text-zinc-800 whitespace-pre-line"
   }, content.body)), /*#__PURE__*/React.createElement("div", {
     className: "px-4 pt-3"
   }, /*#__PURE__*/React.createElement(Label, {
