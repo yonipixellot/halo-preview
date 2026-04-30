@@ -389,6 +389,72 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   .clip2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 
+  /* ===== DARK THEME (token-based · scoped to [data-theme="dark"] container) =====
+     Always-dark surfaces (Watch tab, HighlightViewer, StorytellingDropViewer,
+     LiveGameScreen, editorial drop thumbs) use bg-black/bg-zinc-9xx already, so
+     these overrides don't touch them. The brand red and away-blue stay constant. */
+  [data-theme="dark"].phone { background: #09090b; border-color: #fafafa; }
+  [data-theme="dark"] .phone-screen.bg-white { background-color: #09090b !important; }
+
+  /* Surfaces */
+  [data-theme="dark"] .bg-white { background-color: #18181b !important; }
+  [data-theme="dark"] .bg-zinc-50 { background-color: #18181b !important; }
+  [data-theme="dark"] .bg-zinc-100 { background-color: #27272a !important; }
+  [data-theme="dark"] .bg-zinc-200 { background-color: #3f3f46 !important; }
+
+  /* Text */
+  [data-theme="dark"] .text-black { color: #fafafa !important; }
+  [data-theme="dark"] .text-zinc-700 { color: #d4d4d8 !important; }
+  [data-theme="dark"] .text-zinc-600 { color: #a1a1aa !important; }
+  [data-theme="dark"] .text-zinc-500 { color: #a1a1aa !important; }
+  [data-theme="dark"] .text-zinc-400 { color: #71717a !important; }
+
+  /* Borders + dividers */
+  [data-theme="dark"] .border-black { border-color: #fafafa !important; }
+  [data-theme="dark"] .border-zinc-200 { border-color: #3f3f46 !important; }
+  [data-theme="dark"] .border-zinc-300 { border-color: #3f3f46 !important; }
+  [data-theme="dark"] .border-zinc-400 { border-color: #52525b !important; }
+  [data-theme="dark"] .divide-black > * + * { border-color: #fafafa !important; }
+  [data-theme="dark"] .divide-zinc-200 > * + * { border-color: #3f3f46 !important; }
+
+  /* Hatch — invert ink to white tint when in dark mode */
+  [data-theme="dark"] .hatch { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 6px); }
+
+  /* Body bg + dev sidebar */
+  [data-theme="dark"] body { background: #0a0a0a; }
+
+  /* === Base text color on the themed wrapper so unstyled text inherits white === */
+  [data-theme="dark"] { color: #fafafa; }
+  [data-theme="dark"] .phone-screen { color: #fafafa; }
+
+  /* Extra surfaces that aren't just bg-white */
+  [data-theme="dark"] .bg-zinc-200 { background-color: #3f3f46 !important; }
+
+  /* More text shades */
+  [data-theme="dark"] .text-zinc-900 { color: #fafafa !important; }
+  [data-theme="dark"] .text-zinc-800 { color: #f4f4f5 !important; }
+  [data-theme="dark"] .text-zinc-300 { color: #d4d4d8 !important; }
+  [data-theme="dark"] .text-zinc-200 { color: #e4e4e7 !important; }
+
+  /* Borders that aren't just black */
+  [data-theme="dark"] .border-zinc-100 { border-color: #27272a !important; }
+  [data-theme="dark"] .border-zinc-500 { border-color: #71717a !important; }
+  [data-theme="dark"] .border-zinc-600 { border-color: #71717a !important; }
+  [data-theme="dark"] .border-dashed.border-black { border-color: #fafafa !important; }
+
+  /* Soft shaded bgs (info/success/danger soft variants) */
+  [data-theme="dark"] .bg-red-50 { background-color: #2a1010 !important; }
+  [data-theme="dark"] .bg-green-50 { background-color: #052e16 !important; }
+  [data-theme="dark"] .bg-yellow-50 { background-color: #2a2407 !important; }
+  [data-theme="dark"] .bg-blue-50 { background-color: #0a1929 !important; }
+
+  /* Input placeholder readability on dark inputs */
+  [data-theme="dark"] input::placeholder,
+  [data-theme="dark"] textarea::placeholder { color: #71717a; }
+
+  /* Phone frame outer ring */
+  [data-theme="dark"] .phone { box-shadow: 8px 8px 0 rgba(255,255,255,0.10); }
+
   /* ===== RTL SUPPORT (v3.1) =====
      Prototype-only RTL layer. Engineering should use Tailwind v4's logical-property
      utilities (ms-/me-/ps-/pe-/start-/end-) in the production build.
@@ -602,6 +668,60 @@ const TEAMS_DB = [{
   org: 'Westfield Catholic',
   division: 'U14',
   initial: 'WC'
+}, {
+  id: 't6',
+  name: 'Bears',
+  org: 'Madison Heights',
+  division: 'U14',
+  initial: 'MH'
+}, {
+  id: 't7',
+  name: 'Falcons',
+  org: 'Riverside Academy',
+  division: 'U14',
+  initial: 'RA'
+}, {
+  id: 't8',
+  name: 'Spartans',
+  org: 'Oakwood Prep',
+  division: 'U14',
+  initial: 'OP'
+}, {
+  id: 't9',
+  name: 'Knights',
+  org: 'Saint Marks',
+  division: 'U14',
+  initial: 'SM'
+}, {
+  id: 't10',
+  name: 'Pioneers',
+  org: 'Cedar Valley',
+  division: 'U14',
+  initial: 'CV'
+}, {
+  id: 't11',
+  name: 'Raptors',
+  org: 'Bayview Charter',
+  division: 'U14',
+  initial: 'BC'
+}, {
+  id: 't12',
+  name: 'Cyclones',
+  org: 'Hilltop Academy',
+  division: 'U14',
+  initial: 'HA'
+}, {
+  id: 't13',
+  name: 'Comets',
+  org: 'Northgate High',
+  division: 'U14',
+  initial: 'NH'
+}, {
+  id: 't14',
+  name: 'Mustangs',
+  org: 'Briarcliff Prep',
+  division: 'U14',
+  initial: 'BP'
 }];
 const SEED_GAMES = [{
   id: 'g1',
@@ -1162,12 +1282,12 @@ const CHAPTERS_PLAYER = [{
   tag: 'START'
 }, {
   id: 'c2',
-  title: 'Defensive identity forming',
+  title: 'Defensive insight forming',
   sub: '3 games · 8 stops',
   label: 'CH 02',
   date: 'OCT 2',
   momentIds: ['m24'],
-  tag: 'IDENTITY'
+  tag: 'INSIGHTS'
 }, {
   id: 'c3',
   title: 'First 30-Point Night',
@@ -1227,12 +1347,12 @@ const CHAPTERS_COACH = [{
   tag: 'MOMENTUM'
 }, {
   id: 'cc3',
-  title: 'Defensive identity',
+  title: 'Defensive insight',
   sub: '4Q stops up 38%',
   label: 'CH 03',
   date: 'OCT 18',
   momentIds: ['m24'],
-  tag: 'IDENTITY'
+  tag: 'INSIGHTS'
 }, {
   id: 'cc4',
   title: 'Beat Lincoln in OT',
@@ -1451,6 +1571,7 @@ const findGame = id => SEED_GAMES.find(g => g.id === id);
 
 /* ===== STATE ===== */
 const initialState = {
+  theme: 'light', // 'system' | 'light' | 'dark' — prototype defaults to light; production should follow OS pref
   authed: true,
   // false → AuthFlow gate; true → Shell
   authStep: 'signin',
@@ -1473,6 +1594,7 @@ const initialState = {
   // 'en' | 'he'
   gameStateOverride: null,
   highlightViewer: null,
+  storytellingDrop: null,
   clipper: null,
   packReveal: null,
   revealedGames: { 'gE': true, 'g4': true, 'g5': true },
@@ -1570,6 +1692,21 @@ function appReducer(s, action) {
       return {
         ...s,
         highlightViewer: null
+      };
+    case 'SET_THEME':
+      return {
+        ...s,
+        theme: action.theme
+      };
+    case 'OPEN_STORYTELLING_DROP':
+      return {
+        ...s,
+        storytellingDrop: { id: action.id }
+      };
+    case 'CLOSE_STORYTELLING_DROP':
+      return {
+        ...s,
+        storytellingDrop: null
       };
     case 'OPEN_CLIPPER':
       return {
@@ -1900,11 +2037,7 @@ const VThumb = ({
     className: "absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-black"
   }, /*#__PURE__*/React.createElement(Mono, {
     className: "text-[9px] font-bold leading-none text-white"
-  }, durationStr)), moment?.reactions > 0 && /*#__PURE__*/React.createElement("div", {
-    className: "absolute top-1.5 right-1.5 px-1 py-0.5 bg-white border border-black"
-  }, /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[8.5px] font-bold leading-none"
-  }, "\u2605 ", moment.reactions)), /*#__PURE__*/React.createElement("div", {
+  }, durationStr)), /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-x-0 bottom-0 p-2 bg-white border-t-[1.5px] border-black"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[10.5px] font-bold leading-tight clip2 text-black"
@@ -2013,6 +2146,22 @@ const Toast = ({
 /* ===== APP ROOT ===== */
 function App() {
   const [s, dispatch] = useReducer(appReducer, initialState);
+  // ===== THEME (light / dark / system) =====
+  const [systemDark, setSystemDark] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e) => setSystemDark(!!e.matches);
+    setSystemDark(mq.matches);
+    if (mq.addEventListener) mq.addEventListener('change', handler);
+    else if (mq.addListener) mq.addListener(handler);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener('change', handler);
+      else if (mq.removeListener) mq.removeListener(handler);
+    };
+  }, []);
+  const resolvedTheme = s.theme === 'system' ? (systemDark ? 'dark' : 'light') : s.theme;
+
   useEffect(() => {
     if (!s.feedDemoMode) return;
     const seq = ['none', 'pre', 'live', 'just-ended', 'ready'];
@@ -2045,9 +2194,11 @@ function App() {
       marginLeft: 280
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "phone"
+    className: "phone",
+    "data-theme": resolvedTheme
   }, /*#__PURE__*/React.createElement("div", {
     className: "phone-screen bg-white",
+    "data-theme": resolvedTheme,
     dir: s.language === 'he' ? 'rtl' : 'ltr'
   }, !s.authed ? /*#__PURE__*/React.createElement(AuthFlow, {
     s: s,
@@ -2261,28 +2412,37 @@ const Sidebar = ({
     className: onboardActive && s.onboardStep === 'persona' ? btnPrimary : btn,
     onClick: () => dispatch({
       type: 'RESET_ONBOARDING',
-      persona: 'parent',
       step: 'persona'
     })
   }, "Step 1 \xB7 Persona pick ", onboardActive && s.onboardStep === 'persona' && '●'), /*#__PURE__*/React.createElement("button", {
-    className: onboardActive && s.onboardStep === 'teams' ? btnPrimary : btn,
-    onClick: () => {
-      dispatch({
-        type: 'RESET_ONBOARDING',
-        persona: 'parent',
-        step: 'teams'
-      });
-    }
-  }, "Step 2 \xB7 Pick teams ", onboardActive && s.onboardStep === 'teams' && '●'), /*#__PURE__*/React.createElement("button", {
-    className: onboardActive && s.onboardStep === 'players' ? btnPrimary : btn,
-    onClick: () => {
-      dispatch({
-        type: 'RESET_ONBOARDING',
-        persona: 'parent',
-        step: 'players'
-      });
-    }
-  }, "Step 3 \xB7 Players + \uD83D\uDD14 ", onboardActive && s.onboardStep === 'players' && '●'), /*#__PURE__*/React.createElement("button", {
+    className: onboardActive && s.persona === 'player' && s.onboardStep === 'teams' ? btnPrimary : btn,
+    onClick: () => dispatch({
+      type: 'RESET_ONBOARDING',
+      persona: 'player',
+      step: 'teams'
+    })
+  }, "Step 2 \xB7 Pick teams (player) ", onboardActive && s.persona === 'player' && s.onboardStep === 'teams' && '●'), /*#__PURE__*/React.createElement("button", {
+    className: onboardActive && s.persona === 'parent' && s.onboardStep === 'teams' ? btnPrimary : btn,
+    onClick: () => dispatch({
+      type: 'RESET_ONBOARDING',
+      persona: 'parent',
+      step: 'teams'
+    })
+  }, "Step 2 \xB7 Pick teams (parent) ", onboardActive && s.persona === 'parent' && s.onboardStep === 'teams' && '●'), /*#__PURE__*/React.createElement("button", {
+    className: onboardActive && s.persona === 'player' && s.onboardStep === 'players' ? btnPrimary : btn,
+    onClick: () => dispatch({
+      type: 'RESET_ONBOARDING',
+      persona: 'player',
+      step: 'players'
+    })
+  }, "Step 3 \xB7 Who are you (player) ", onboardActive && s.persona === 'player' && s.onboardStep === 'players' && '●'), /*#__PURE__*/React.createElement("button", {
+    className: onboardActive && s.persona === 'parent' && s.onboardStep === 'players' ? btnPrimary : btn,
+    onClick: () => dispatch({
+      type: 'RESET_ONBOARDING',
+      persona: 'parent',
+      step: 'players'
+    })
+  }, "Step 3 \xB7 Pick players (parent) ", onboardActive && s.persona === 'parent' && s.onboardStep === 'players' && '●'), /*#__PURE__*/React.createElement("button", {
     className: btn,
     onClick: () => dispatch({
       type: 'COMPLETE_ONBOARDING'
@@ -2657,6 +2817,9 @@ const Shell = ({
     s: s,
     dispatch: dispatch
   }), s.highlightViewer && /*#__PURE__*/React.createElement(HighlightViewer, {
+    s: s,
+    dispatch: dispatch
+  }), s.storytellingDrop && /*#__PURE__*/React.createElement(StorytellingDropViewer, {
     s: s,
     dispatch: dispatch
   }), s.clipper && /*#__PURE__*/React.createElement(Clipper, {
@@ -3170,7 +3333,7 @@ const I18N = {
     rank: 'RANK',
     defStat: '4Q DEF',
     upgrade: 'Sign up to track your moments',
-    upgradeBody: 'Follow players · save moments · daily identity',
+    upgradeBody: 'Follow players · save moments · daily insights',
     signupFree: 'Sign up · free →',
     // watch
     haloTv: 'HALO TV',
@@ -3230,12 +3393,12 @@ const I18N = {
     makeAMoment: 'MAKE A MOMENT',
     placeholderClipping: 'Placeholder · clipping is being scoped for the next phase. Save is disabled.',
     // profile
-    yourIdentity: 'YOUR IDENTITY',
-    identityToday: 'YOUR IDENTITY · TODAY',
-    identityLog: 'IDENTITY LOG',
+    yourIdentity: 'Your Season Insights',
+    identityToday: 'Your Season Insights · Today',
+    identityLog: 'Insights Log',
     tapToRead: 'TAP TO READ',
     refreshesTomorrow: 'REFRESHES TOMORROW',
-    generateIdentity: 'Generate your Halo identity',
+    generateIdentity: 'Generate your season insights',
     generateBody: "We'll read your last 30 games and write a one-line description of how you play. It refreshes every day.",
     generate: 'GENERATE',
     points: 'POINTS',
@@ -3451,12 +3614,12 @@ const I18N = {
     makeAMoment: 'צור רגע',
     placeholderClipping: 'בקרוב · עריכה תפותח בשלב הבא. שמירה מושבתת.',
     // profile
-    yourIdentity: 'הזהות שלך',
-    identityToday: 'הזהות שלך · היום',
-    identityLog: 'יומן זהות',
+    yourIdentity: 'התובנות שלך לעונה',
+    identityToday: 'התובנות שלך לעונה · היום',
+    identityLog: 'יומן תובנות',
     tapToRead: 'הקש לקריאה',
     refreshesTomorrow: 'מתעדכן מחר',
-    generateIdentity: 'צור את הזהות שלך',
+    generateIdentity: 'צור את תובנות העונה שלך',
     generateBody: 'נקרא את 30 המשחקים האחרונים שלך ונכתוב משפט אחד שמתאר איך אתה משחק. מתעדכן כל יום.',
     generate: 'צור',
     points: 'נקודות',
@@ -3528,9 +3691,15 @@ const AuthFlow = ({
   dispatch
 }) => {
   const t = useT(s);
+  const showThemeToggle = s.authStep === 'signin' || s.authStep === 'signup';
   return /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 bg-white anim-fade overflow-y-auto"
-  }, s.authStep === 'signin' && /*#__PURE__*/React.createElement(SignInScreen, {
+  }, showThemeToggle && /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-5 right-5 z-30"
+  }, /*#__PURE__*/React.createElement(ThemeToggle, {
+    s: s,
+    dispatch: dispatch
+  })), s.authStep === 'signin' && /*#__PURE__*/React.createElement(SignInScreen, {
     s: s,
     dispatch: dispatch,
     t: t
@@ -3663,6 +3832,9 @@ const SignUpScreen = ({
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [confirm, setConfirm] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [country, setCountry] = useState('');
+  const [gender, setGender] = useState('');
   const [err, setErr] = useState(null);
   const valid = p => p.length >= 8 && /[A-Z]/.test(p) && /[0-9]/.test(p);
   const submit = () => {
@@ -3680,6 +3852,29 @@ const SignUpScreen = ({
     }
     if (pwd !== confirm) {
       setErr('Passwords do not match');
+      return;
+    }
+    if (!birthDate) {
+      setErr('Pick your birth date');
+      return;
+    }
+    {
+      const bd = new Date(birthDate);
+      const today = new Date();
+      let yrs = today.getFullYear() - bd.getFullYear();
+      const m = today.getMonth() - bd.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < bd.getDate())) yrs--;
+      if (isNaN(yrs) || yrs < 8 || yrs > 100) {
+        setErr('Birth date must put you between 8 and 100');
+        return;
+      }
+    }
+    if (!country) {
+      setErr('Pick your country');
+      return;
+    }
+    if (!gender) {
+      setErr('Pick a gender');
       return;
     }
     dispatch({
@@ -3738,7 +3933,35 @@ const SignUpScreen = ({
     type: "password",
     placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
     className: "w-full px-3 py-3 border-[1.5px] border-black text-[13px] outline-none"
-  })), err && /*#__PURE__*/React.createElement("div", {
+  })),
+    /*#__PURE__*/React.createElement("div", { className: "grid grid-cols-2 gap-3" },
+      /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Label, {
+        className: "text-zinc-500 mb-1 block"
+      }, "Birth date"), /*#__PURE__*/React.createElement("input", {
+        value: birthDate,
+        onChange: e => setBirthDate(e.target.value),
+        type: "date",
+        max: new Date().toISOString().slice(0, 10),
+        className: "w-full px-3 py-3 border-[1.5px] border-black text-[13px] outline-none bg-white"
+      })),
+      /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Label, {
+        className: "text-zinc-500 mb-1 block"
+      }, "Gender"), /*#__PURE__*/React.createElement("select", {
+        value: gender,
+        onChange: e => setGender(e.target.value),
+        className: "w-full px-3 py-3 border-[1.5px] border-black text-[13px] outline-none bg-white"
+      }, /*#__PURE__*/React.createElement("option", { value: "" }, "Select\u2026"), /*#__PURE__*/React.createElement("option", { value: "male" }, "Male"), /*#__PURE__*/React.createElement("option", { value: "female" }, "Female"), /*#__PURE__*/React.createElement("option", { value: "nonbinary" }, "Non-binary"), /*#__PURE__*/React.createElement("option", { value: "prefer_not" }, "Prefer not to say")))
+    ),
+    /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Label, {
+      className: "text-zinc-500 mb-1 block"
+    }, "Country"), /*#__PURE__*/React.createElement("select", {
+      value: country,
+      onChange: e => setCountry(e.target.value),
+      className: "w-full px-3 py-3 border-[1.5px] border-black text-[13px] outline-none bg-white"
+    }, /*#__PURE__*/React.createElement("option", { value: "" }, "Select your country\u2026"),
+      ['United States','Canada','United Kingdom','Australia','Israel','Germany','France','Spain','Italy','Netherlands','Sweden','Norway','Denmark','Brazil','Argentina','Mexico','Japan','South Korea','Singapore','Other'].map(c => /*#__PURE__*/React.createElement("option", { key: c, value: c }, c))
+    )),
+    err && /*#__PURE__*/React.createElement("div", {
     className: "px-3 py-2 border-[1.5px] border-black bg-zinc-100"
   }, /*#__PURE__*/React.createElement(Caption, {
     className: "!text-black"
@@ -4056,13 +4279,9 @@ const Onboarding = ({
     type: 'SET_ONBOARD_STEP',
     step: next
   });
-  const [chosenTeams, setChosenTeams] = useState(['t1']);
-  const [chosenPlayers, setChosenPlayers] = useState({
-    r1: true
-  });
-  const [notify, setNotify] = useState({
-    r1: true
-  });
+  const [chosenTeams, setChosenTeams] = useState([]);
+  const [chosenPlayers, setChosenPlayers] = useState({});
+  const [notify, setNotify] = useState({});
   const [permissionSheet, setPermissionSheet] = useState(null);
   const togglePlayer = id => {
     const next = {
@@ -4070,7 +4289,8 @@ const Onboarding = ({
       [id]: !chosenPlayers[id]
     };
     setChosenPlayers(next);
-    if (next[id] && !notify[id]) handleNotifyToggle(id, true);
+    // Don't auto-trigger the OS-style notify upsell here; that only fires
+    // when the user taps Done at the bottom of Step 3 (or Allow on the soft card).
     if (!next[id]) setNotify({
       ...notify,
       [id]: false
@@ -4150,6 +4370,7 @@ const Onboarding = ({
     chosenTeams: chosenTeams,
     chosenPlayers: chosenPlayers,
     notify: notify,
+    persona: s.persona,
     togglePlayer: togglePlayer,
     handleNotifyToggle: handleNotifyToggle,
     onBack: () => setStep('teams'),
@@ -4212,10 +4433,178 @@ const TeamsStep = ({
   onNext
 }) => {
   const [q, setQ] = useState('');
+  const isPlayer = persona === 'player';
   const isCoach = persona === 'coach';
-  // Coach sees only the teams they coach (mock: just t1 = Eastside Prep Varsity)
+  // Player flow: chosen[0] is the player's own team. Subsequent items are followed teams in division.
+  const myTeamId = isPlayer ? (chosen[0] || null) : null;
+  const myTeam = myTeamId ? TEAMS_DB.find(t => t.id === myTeamId) : null;
+  // Coach sees only the teams they coach (mock: just t1)
   const baseTeams = isCoach ? TEAMS_DB.filter(t => t.id === 't1') : TEAMS_DB;
-  const filtered = baseTeams.filter(t => !q || (t.name + t.org).toLowerCase().includes(q.toLowerCase()));
+  const filteredAll = baseTeams.filter(t => !q || (t.name + ' ' + t.org).toLowerCase().includes(q.toLowerCase()));
+  const divisionTeams = myTeam ? TEAMS_DB.filter(t => t.division === myTeam.division && t.id !== myTeam.id) : [];
+  const filteredDivision = divisionTeams.filter(t => !q || (t.name + ' ' + t.org).toLowerCase().includes(q.toLowerCase()));
+  const followedExtras = isPlayer ? chosen.slice(1) : [];
+
+  /* ===== PLAYER — single page, two sections (my team + division extras) ===== */
+  if (isPlayer) {
+    const [pickingMyTeam, setPickingMyTeam] = useState(false);
+    const [qMy, setQMy] = useState('');
+    const [qDiv, setQDiv] = useState('');
+    const setMyTeam = (id) => {
+      // Replace the first slot with the new my-team id, drop any extras (division choices were tied to the old team)
+      setChosen([id]);
+      setPickingMyTeam(false);
+      setQMy('');
+    };
+    const clearMyTeam = () => {
+      setChosen([]);
+      setQDiv('');
+    };
+    const toggleDiv = (id) => {
+      if (chosen.includes(id)) {
+        setChosen(chosen.filter(x => x !== id));
+      } else {
+        setChosen([...chosen, id]);
+      }
+    };
+    const myTeamFilteredAll = TEAMS_DB.filter(t => !qMy || (t.name + ' ' + t.org).toLowerCase().includes(qMy.toLowerCase()));
+    const divisionFilteredAll = (myTeam ? TEAMS_DB.filter(t => t.division === myTeam.division && t.id !== myTeam.id) : []).filter(t => !qDiv || (t.name + ' ' + t.org).toLowerCase().includes(qDiv.toLowerCase()));
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BackBar, {
+      onBack: onBack,
+      title: "Pick teams"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "px-5 pt-3 pb-2"
+    }, /*#__PURE__*/React.createElement(Label, {
+      className: "text-zinc-500 block mb-2"
+    }, "STEP 2 OF 3"), /*#__PURE__*/React.createElement("h2", {
+      className: "text-[18px] font-extrabold mb-1"
+    }, "Pick your team\u2019s"), /*#__PURE__*/React.createElement(Caption, null, "Lock in the team you play for, then add rivals from your division if you want.")),
+
+      /* ----- MY TEAM SECTION ----- */
+      /*#__PURE__*/React.createElement("div", {
+        className: "px-5 mt-4"
+      }, /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9.5px] tracking-[0.18em] uppercase font-bold text-zinc-500 block mb-2"
+      }, "My team"),
+        myTeam ? /*#__PURE__*/React.createElement("div", {
+          className: "border-[2px] border-black bg-zinc-100 hatch p-1"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "bg-white border-[1.5px] border-black p-3 flex items-center gap-3"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "w-12 h-12 border-[1.5px] border-black bg-white flex items-center justify-center"
+        }, /*#__PURE__*/React.createElement(Mono, {
+          className: "text-[12px] font-black"
+        }, myTeam.initial)), /*#__PURE__*/React.createElement("div", {
+          className: "flex-1 min-w-0"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "text-[14px] font-extrabold leading-tight"
+        }, myTeam.name), /*#__PURE__*/React.createElement(Mono, {
+          className: "text-[10px] tracking-wider uppercase text-zinc-500 block mt-0.5"
+        }, myTeam.org, " \xB7 ", myTeam.division)), /*#__PURE__*/React.createElement("button", {
+          onClick: clearMyTeam,
+          className: "w-7 h-7 border-[1.5px] border-black bg-white flex items-center justify-center text-[11px]",
+          "aria-label": "Change team"
+        }, "\u2715"))) : !pickingMyTeam ? /*#__PURE__*/React.createElement("button", {
+          onClick: () => setPickingMyTeam(true),
+          className: "w-full py-3.5 border-[1.5px] border-dashed border-black bg-white font-mono text-[11px] tracking-[0.15em] uppercase font-bold flex items-center justify-center gap-2"
+        }, /*#__PURE__*/React.createElement("span", { className: "text-[12px]" }, "+"), " Select the team you play for") : /*#__PURE__*/React.createElement(React.Fragment, null,
+          /*#__PURE__*/React.createElement("input", {
+            value: qMy,
+            autoFocus: true,
+            onChange: (e) => setQMy(e.target.value),
+            placeholder: "Search teams or schools\u2026",
+            className: "w-full px-3 py-2.5 border-[1.5px] border-black text-[12px] outline-none mb-2"
+          }),
+          /*#__PURE__*/React.createElement("div", {
+            className: "space-y-2 max-h-[260px] overflow-y-auto pr-0.5"
+          }, myTeamFilteredAll.length === 0 ? /*#__PURE__*/React.createElement("div", {
+            className: "border-[1.5px] border-dashed border-black p-3 text-center"
+          }, /*#__PURE__*/React.createElement(Caption, {
+            className: "!normal-case !tracking-normal text-zinc-600 block",
+            style: { fontSize: 11.5, letterSpacing: 0 }
+          }, "No teams match \u201C", qMy, "\u201D")) : myTeamFilteredAll.map(t => /*#__PURE__*/React.createElement("button", {
+            key: t.id,
+            onClick: () => setMyTeam(t.id),
+            className: "w-full p-2.5 border-[1.5px] border-black bg-white flex items-center gap-3 text-left"
+          }, /*#__PURE__*/React.createElement("div", {
+            className: "w-9 h-9 border-[1.5px] border-black bg-zinc-100 hatch flex items-center justify-center"
+          }, /*#__PURE__*/React.createElement(Mono, {
+            className: "text-[10px] font-bold"
+          }, t.initial)), /*#__PURE__*/React.createElement("div", {
+            className: "flex-1 min-w-0"
+          }, /*#__PURE__*/React.createElement("div", {
+            className: "text-[12.5px] font-bold"
+          }, t.name), /*#__PURE__*/React.createElement(Mono, {
+            className: "text-[10px] tracking-wider uppercase text-zinc-500"
+          }, t.org, " \xB7 ", t.division)), /*#__PURE__*/React.createElement("span", {
+            className: "text-[14px] text-zinc-400"
+          }, "\u203A"))))
+        )
+      ),
+
+      /* ----- DIVISION TEAMS SECTION (only after my team is locked) ----- */
+      myTeam && /*#__PURE__*/React.createElement("div", {
+        className: "px-5 mt-6 pb-32"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "flex items-baseline justify-between mb-2"
+      }, /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9.5px] tracking-[0.18em] uppercase font-bold text-zinc-500"
+      }, "Other teams in your division"), /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9px] tracking-[0.14em] uppercase font-bold text-zinc-400"
+      }, "Optional")), /*#__PURE__*/React.createElement(Caption, {
+        className: "!normal-case !tracking-normal text-zinc-600 block mb-2",
+        style: { fontSize: 11.5, letterSpacing: 0 }
+      }, "Add rivals from ", myTeam.division, " or skip and follow only your team."), /*#__PURE__*/React.createElement("input", {
+        value: qDiv,
+        onChange: (e) => setQDiv(e.target.value),
+        placeholder: "Search " + myTeam.division + " teams\u2026",
+        className: "w-full px-3 py-2.5 border-[1.5px] border-black text-[12px] outline-none mb-2"
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "space-y-2"
+      }, divisionFilteredAll.length === 0 ? /*#__PURE__*/React.createElement("div", {
+        className: "border-[1.5px] border-dashed border-black p-3 text-center"
+      }, /*#__PURE__*/React.createElement(Caption, {
+        className: "!normal-case !tracking-normal text-zinc-600 block",
+        style: { fontSize: 11.5, letterSpacing: 0 }
+      }, qDiv ? "No teams match \u201C" + qDiv + "\u201D" : "No other teams in your division yet \u2014 you can keep going.")) : divisionFilteredAll.map(t => {
+        const isOn = chosen.includes(t.id);
+        return /*#__PURE__*/React.createElement("button", {
+          key: t.id,
+          onClick: () => toggleDiv(t.id),
+          className: cls('w-full p-2.5 border-[1.5px] border-black flex items-center gap-3 text-left', isOn ? 'bg-black text-white' : 'bg-white')
+        }, /*#__PURE__*/React.createElement("div", {
+          className: cls('w-9 h-9 border-[1.5px] flex items-center justify-center', isOn ? 'border-white bg-black' : 'border-black bg-zinc-100 hatch')
+        }, /*#__PURE__*/React.createElement(Mono, {
+          className: cls('text-[10px] font-bold', isOn ? 'text-white' : 'text-black')
+        }, t.initial)), /*#__PURE__*/React.createElement("div", {
+          className: "flex-1 min-w-0"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "text-[12.5px] font-bold"
+        }, t.name), /*#__PURE__*/React.createElement(Mono, {
+          className: cls('text-[10px] tracking-wider uppercase', isOn ? 'text-zinc-300' : 'text-zinc-500')
+        }, t.org, " \xB7 ", t.division)), /*#__PURE__*/React.createElement("div", {
+          className: cls('w-5 h-5 border-[1.5px] flex items-center justify-center', isOn ? 'border-white bg-white text-black' : 'border-black')
+        }, isOn && /*#__PURE__*/React.createElement("span", {
+          className: "text-[10px]"
+        }, "\u2713")));
+      }))),
+
+      /* ----- BOTTOM CONTINUE ----- */
+      /*#__PURE__*/React.createElement("div", {
+        className: "absolute bottom-0 inset-x-0 p-4 bg-white border-t-[1.5px] border-black"
+      }, /*#__PURE__*/React.createElement("button", {
+        disabled: !myTeam,
+        onClick: onNext,
+        className: cls('w-full py-3 border-[1.5px] border-black font-mono text-[11px] tracking-[0.15em] uppercase font-bold', myTeam ? 'bg-black text-white' : 'bg-zinc-100 text-zinc-400')
+      }, !myTeam ? "Continue" : (followedExtras.length > 0 ? `Continue \xB7 ${followedExtras.length} extra ${followedExtras.length === 1 ? 'team' : 'teams'}` : "Continue \u2014 just my team")), !myTeam && /*#__PURE__*/React.createElement(Caption, {
+        className: "!text-zinc-500 block text-center mt-2",
+        style: { fontSize: 10.5, letterSpacing: 0 }
+      }, "Lock in your team to continue"))
+    );
+  }
+
+  /* ===== ALL OTHER PERSONAS — original multi-team flow ===== */
+  const filtered = filteredAll;
   const toggle = id => setChosen(chosen.includes(id) ? chosen.filter(x => x !== id) : [...chosen, id]);
   const noLeague = baseTeams.length === 0;
   const noResults = !noLeague && filtered.length === 0;
@@ -4242,12 +4631,12 @@ const TeamsStep = ({
   }, "No league configured"), /*#__PURE__*/React.createElement(Caption, {
     className: "!normal-case !tracking-normal text-zinc-600 block",
     style: { fontSize: 11.5, letterSpacing: 0 }
-  }, "Your tenant hasn't set up a league yet — skip for now and your admin can add teams later.")), noResults && /*#__PURE__*/React.createElement("div", {
+  }, "Your tenant hasn't set up a league yet \u2014 skip for now and your admin can add teams later.")), noResults && /*#__PURE__*/React.createElement("div", {
     className: "border-[1.5px] border-dashed border-black p-4 text-center"
   }, /*#__PURE__*/React.createElement(Caption, {
     className: "!normal-case !tracking-normal text-zinc-600 block",
     style: { fontSize: 11.5, letterSpacing: 0 }
-  }, "No teams match “", q, "”")), filtered.map(t => {
+  }, "No teams match \u201C", q, "\u201D")), filtered.map(t => {
     const isOn = chosen.includes(t.id);
     return /*#__PURE__*/React.createElement("button", {
       key: t.id,
@@ -4274,7 +4663,7 @@ const TeamsStep = ({
     disabled: !chosen.length,
     onClick: onNext,
     className: cls('w-full py-3 border-[1.5px] border-black font-mono text-[11px] tracking-[0.15em] uppercase font-bold', chosen.length ? 'bg-black text-white' : 'bg-zinc-100 text-zinc-400')
-  }, isCoach ? `Confirm · ${chosen.length} ${chosen.length === 1 ? 'team' : 'teams'}` : `Continue · ${chosen.length} ${chosen.length === 1 ? 'team' : 'teams'}`), !chosen.length && /*#__PURE__*/React.createElement(Caption, {
+  }, isCoach ? `Confirm \xB7 ${chosen.length} ${chosen.length === 1 ? 'team' : 'teams'}` : `Continue \xB7 ${chosen.length} ${chosen.length === 1 ? 'team' : 'teams'}`), !chosen.length && /*#__PURE__*/React.createElement(Caption, {
     className: "!text-zinc-500 block text-center mt-2",
     style: { fontSize: 10.5, letterSpacing: 0 }
   }, "Pick at least one team to continue")));
@@ -4283,6 +4672,7 @@ const PlayersStep = ({
   chosenTeams,
   chosenPlayers,
   notify,
+  persona,
   togglePlayer,
   handleNotifyToggle,
   onBack,
@@ -4292,6 +4682,193 @@ const PlayersStep = ({
   const teams = TEAMS_DB.filter(t => chosenTeams.includes(t.id));
   const selectedCount = Object.values(chosenPlayers).filter(Boolean).length;
   const notifyOn = Object.keys(notify).filter(k => notify[k] && chosenPlayers[k]).length;
+  const isPlayer = persona === 'player';
+
+  /* ===== PLAYER FLOW — pick "me" then suggest teammates ===== */
+  if (isPlayer) {
+    const myTeam = teams[0] || null;
+    const [selfId, setSelfId] = useState(null);
+    const [pickingSelf, setPickingSelf] = useState(false);
+    const [qSelf, setQSelf] = useState('');
+    const [qMates, setQMates] = useState('');
+    const myPlayer = selfId ? ROSTER.find(p => p.id === selfId) : null;
+    const rosterFiltered = ROSTER.filter(p => !qSelf || (p.name + ' #' + p.number + ' ' + p.position).toLowerCase().includes(qSelf.toLowerCase()));
+    const teammates = ROSTER.filter(p => p.id !== selfId);
+    const teammatesFiltered = teammates.filter(p => !qMates || (p.name + ' #' + p.number + ' ' + p.position).toLowerCase().includes(qMates.toLowerCase()));
+    const lockSelf = (id) => {
+      setSelfId(id);
+      setPickingSelf(false);
+      setQSelf('');
+      // Make sure self isn't also in the followed list
+      if (chosenPlayers[id]) togglePlayer(id);
+    };
+    const clearSelf = () => {
+      setSelfId(null);
+      setQMates('');
+    };
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BackBar, {
+      onBack: onBack,
+      title: "Who are you?"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "px-5 pt-3 pb-2"
+    }, /*#__PURE__*/React.createElement(Label, {
+      className: "text-zinc-500 block mb-2"
+    }, "STEP 3 OF 3"), /*#__PURE__*/React.createElement("h2", {
+      className: "text-[18px] font-extrabold mb-1"
+    }, "Who are you?"), /*#__PURE__*/React.createElement(Caption, null, "Pick yourself from the roster, then add teammates you want to follow.")),
+
+      /* ----- ME SECTION ----- */
+      /*#__PURE__*/React.createElement("div", {
+        className: "px-5 mt-4"
+      }, /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9.5px] tracking-[0.18em] uppercase font-bold text-zinc-500 block mb-2"
+      }, "Me"),
+        myPlayer ? /*#__PURE__*/React.createElement("div", {
+          className: "border-[2px] border-black bg-zinc-100 hatch p-1"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "bg-white border-[1.5px] border-black p-3 flex items-center gap-3"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "w-12 h-12 border-[1.5px] border-black bg-white flex items-center justify-center"
+        }, /*#__PURE__*/React.createElement(Mono, {
+          className: "text-[12px] font-black"
+        }, "#", myPlayer.number)), /*#__PURE__*/React.createElement("div", {
+          className: "flex-1 min-w-0"
+        }, /*#__PURE__*/React.createElement(Mono, {
+          className: "text-[9px] tracking-[0.18em] uppercase font-bold text-zinc-500 block mb-0.5"
+        }, "This is me"), /*#__PURE__*/React.createElement("div", {
+          className: "text-[14px] font-extrabold leading-tight"
+        }, myPlayer.name), /*#__PURE__*/React.createElement(Mono, {
+          className: "text-[10px] tracking-wider uppercase text-zinc-500 block mt-0.5"
+        }, myPlayer.position, myTeam ? ` · ${myTeam.name}` : '')), /*#__PURE__*/React.createElement("button", {
+          onClick: clearSelf,
+          className: "w-7 h-7 border-[1.5px] border-black bg-white flex items-center justify-center text-[11px]",
+          "aria-label": "Change player"
+        }, "✕"))) : !pickingSelf ? /*#__PURE__*/React.createElement("button", {
+          onClick: () => setPickingSelf(true),
+          className: "w-full py-3.5 border-[1.5px] border-dashed border-black bg-white font-mono text-[11px] tracking-[0.15em] uppercase font-bold flex items-center justify-center gap-2"
+        }, /*#__PURE__*/React.createElement("span", { className: "text-[12px]" }, "+"), " This is me") : /*#__PURE__*/React.createElement(React.Fragment, null,
+          /*#__PURE__*/React.createElement("input", {
+            value: qSelf,
+            autoFocus: true,
+            onChange: (e) => setQSelf(e.target.value),
+            placeholder: "Search by name or number…",
+            className: "w-full px-3 py-2.5 border-[1.5px] border-black text-[12px] outline-none mb-2"
+          }),
+          /*#__PURE__*/React.createElement("div", {
+            className: "space-y-2 max-h-[260px] overflow-y-auto pr-0.5"
+          }, rosterFiltered.length === 0 ? /*#__PURE__*/React.createElement("div", {
+            className: "border-[1.5px] border-dashed border-black p-3 text-center"
+          }, /*#__PURE__*/React.createElement(Caption, {
+            className: "!normal-case !tracking-normal text-zinc-600 block",
+            style: { fontSize: 11.5, letterSpacing: 0 }
+          }, "No players match “", qSelf, "”")) : rosterFiltered.map(p => /*#__PURE__*/React.createElement("button", {
+            key: p.id,
+            onClick: () => lockSelf(p.id),
+            className: "w-full p-2.5 border-[1.5px] border-black bg-white flex items-center gap-3 text-left"
+          }, /*#__PURE__*/React.createElement("div", {
+            className: "w-9 h-9 border-[1.5px] border-black bg-white flex items-center justify-center"
+          }, /*#__PURE__*/React.createElement(Mono, {
+            className: "text-[10px] font-bold"
+          }, "#", p.number)), /*#__PURE__*/React.createElement("div", {
+            className: "flex-1 min-w-0"
+          }, /*#__PURE__*/React.createElement("div", {
+            className: "text-[12.5px] font-bold"
+          }, p.name), /*#__PURE__*/React.createElement(Mono, {
+            className: "text-[10px] tracking-wider uppercase text-zinc-500"
+          }, p.position)), /*#__PURE__*/React.createElement("span", {
+            className: "text-[14px] text-zinc-400"
+          }, "›"))))
+        )
+      ),
+
+      /* ----- TEAMMATES SECTION ----- */
+      myPlayer && /*#__PURE__*/React.createElement("div", {
+        className: "px-5 mt-6 pb-44"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "flex items-baseline justify-between mb-2"
+      }, /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9.5px] tracking-[0.18em] uppercase font-bold text-zinc-500"
+      }, "Teammates to follow"), /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9px] tracking-[0.14em] uppercase font-bold text-zinc-400"
+      }, "Optional")), /*#__PURE__*/React.createElement(Caption, {
+        className: "!normal-case !tracking-normal text-zinc-600 block mb-2",
+        style: { fontSize: 11.5, letterSpacing: 0 }
+      }, "Tap to follow. Skip if you only want yourself for now."), /*#__PURE__*/React.createElement("input", {
+        value: qMates,
+        onChange: (e) => setQMates(e.target.value),
+        placeholder: "Search teammates…",
+        className: "w-full px-3 py-2.5 border-[1.5px] border-black text-[12px] outline-none mb-2"
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "space-y-2"
+      }, teammatesFiltered.length === 0 ? /*#__PURE__*/React.createElement("div", {
+        className: "border-[1.5px] border-dashed border-black p-3 text-center"
+      }, /*#__PURE__*/React.createElement(Caption, {
+        className: "!normal-case !tracking-normal text-zinc-600 block",
+        style: { fontSize: 11.5, letterSpacing: 0 }
+      }, qMates ? "No teammates match “" + qMates + "”" : "No other teammates yet.")) : teammatesFiltered.map(p => {
+        const isOn = !!chosenPlayers[p.id];
+        return /*#__PURE__*/React.createElement("button", {
+          key: p.id,
+          onClick: () => togglePlayer(p.id),
+          className: cls('w-full p-2.5 border-[1.5px] border-black flex items-center gap-3 text-left', isOn ? 'bg-black text-white' : 'bg-white')
+        }, /*#__PURE__*/React.createElement("div", {
+          className: cls('w-9 h-9 border-[1.5px] flex items-center justify-center', isOn ? 'border-white bg-black' : 'border-black bg-white')
+        }, /*#__PURE__*/React.createElement(Mono, {
+          className: cls('text-[10px] font-bold', isOn ? 'text-white' : 'text-black')
+        }, "#", p.number)), /*#__PURE__*/React.createElement("div", {
+          className: "flex-1 min-w-0"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "text-[12.5px] font-bold"
+        }, p.name), /*#__PURE__*/React.createElement(Mono, {
+          className: cls('text-[10px] tracking-wider uppercase', isOn ? 'text-zinc-300' : 'text-zinc-500')
+        }, p.position)), /*#__PURE__*/React.createElement("div", {
+          className: cls('w-5 h-5 border-[1.5px] flex items-center justify-center', isOn ? 'border-white bg-white text-black' : 'border-black')
+        }, isOn && /*#__PURE__*/React.createElement("span", {
+          className: "text-[10px]"
+        }, "✓")));
+      }))),
+
+      /* ----- NOTIFY CARD (only when at least one teammate is selected) ----- */
+      selectedCount > 0 && /*#__PURE__*/React.createElement("div", {
+        className: "px-5 pb-4"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "border-[1.5px] border-black bg-zinc-50 p-3"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "flex items-start gap-2 mb-2"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-[16px] leading-none"
+      }, "🔔"), /*#__PURE__*/React.createElement("div", {
+        className: "flex-1"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "text-[12.5px] font-bold leading-tight"
+      }, "Notify me when these ", selectedCount, " play"), /*#__PURE__*/React.createElement(Caption, {
+        className: "!normal-case !tracking-normal text-zinc-600 mt-0.5 block",
+        style: { fontSize: 10.5, letterSpacing: 0 }
+      }, "Heads-up before tipoff, recap when game ends."))), /*#__PURE__*/React.createElement("div", {
+        className: "grid grid-cols-2 gap-2"
+      }, /*#__PURE__*/React.createElement("button", {
+        onClick: () => handleNotifyToggle('__all_selected', true),
+        className: cls('py-2 border-[1.5px] border-black font-mono text-[10px] tracking-[0.12em] uppercase font-bold', notifyOn > 0 ? 'bg-black text-white' : 'bg-white')
+      }, notifyOn > 0 ? "Notifications on" : "Allow"), /*#__PURE__*/React.createElement("button", {
+        onClick: () => handleNotifyToggle('__all_selected', false),
+        className: "py-2 border-[1.5px] border-black bg-white font-mono text-[10px] tracking-[0.12em] uppercase font-bold"
+      }, "Maybe later")))),
+
+      /* ----- BOTTOM CONTINUE ----- */
+      /*#__PURE__*/React.createElement("div", {
+        className: "absolute bottom-0 inset-x-0 p-4 bg-white border-t-[1.5px] border-black space-y-2"
+      }, /*#__PURE__*/React.createElement("button", {
+        disabled: !myPlayer,
+        onClick: onFinish,
+        className: cls('w-full py-3 border-[1.5px] border-black font-mono text-[11px] tracking-[0.15em] uppercase font-bold', myPlayer ? 'bg-black text-white' : 'bg-zinc-100 text-zinc-400')
+      }, !myPlayer ? "Done" : (selectedCount > 0 ? `Done · me + ${selectedCount} ${selectedCount === 1 ? 'teammate' : 'teammates'}` : "Done — just me")), /*#__PURE__*/React.createElement("button", {
+        onClick: onSkip,
+        className: "w-full py-2 font-mono text-[10px] tracking-[0.12em] uppercase text-zinc-500"
+      }, "Skip for now"))
+    );
+  }
+
+  /* ===== ALL OTHER PERSONAS — original multi-team players list ===== */
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BackBar, {
     onBack: onBack,
     title: "Pick players"
@@ -4313,11 +4890,10 @@ const PlayersStep = ({
     className: "text-[9px] font-bold"
   }, team.initial)), /*#__PURE__*/React.createElement("span", {
     className: "text-[11px] font-bold"
-  }, team.name), /*#__PURE__*/React.createElement(Caption, null, "\xB7 ", team.org)), /*#__PURE__*/React.createElement("div", {
+  }, team.name), /*#__PURE__*/React.createElement(Caption, null, "· ", team.org)), /*#__PURE__*/React.createElement("div", {
     className: "space-y-1.5"
   }, ROSTER.map(p => {
     const isOn = !!chosenPlayers[p.id];
-    const notifOn = !!notify[p.id];
     return /*#__PURE__*/React.createElement("div", {
       key: p.id,
       className: cls('p-2.5 border-[1.5px] border-black flex items-center gap-3', isOn ? 'bg-zinc-100' : 'bg-white')
@@ -4336,7 +4912,7 @@ const PlayersStep = ({
       className: cls('w-5 h-5 border-[1.5px] border-black flex items-center justify-center', isOn ? 'bg-black text-white' : 'bg-white')
     }, isOn && /*#__PURE__*/React.createElement("span", {
       className: "text-[10px]"
-    }, "\u2713"))));
+    }, "✓"))));
   }))))), selectedCount > 0 && /*#__PURE__*/React.createElement("div", {
     className: "px-5 pb-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -4366,7 +4942,7 @@ const PlayersStep = ({
     disabled: !selectedCount,
     onClick: onFinish,
     className: cls('w-full py-3 border-[1.5px] border-black font-mono text-[11px] tracking-[0.15em] uppercase font-bold', selectedCount ? 'bg-black text-white' : 'bg-zinc-100 text-zinc-400')
-  }, "Done \xB7 Following ", selectedCount, notifyOn > 0 && ` · ◉ ${notifyOn}`), /*#__PURE__*/React.createElement("button", {
+  }, "Done · Following ", selectedCount, notifyOn > 0 && ` · ◉ ${notifyOn}`), /*#__PURE__*/React.createElement("button", {
     onClick: onSkip,
     className: "w-full py-2 font-mono text-[10px] tracking-[0.12em] uppercase text-zinc-500"
   }, "Skip for now")));
@@ -4618,7 +5194,7 @@ const HomeGuest = ({
       fontSize: 11,
       letterSpacing: 0
     }
-  }, "Follow players \xB7 save moments \xB7 daily identity"), /*#__PURE__*/React.createElement("button", {
+  }, "Follow players \xB7 save moments \xB7 daily insights"), /*#__PURE__*/React.createElement("button", {
     onClick: () => {
       dispatch({
         type: 'SIGN_OUT'
@@ -4749,7 +5325,8 @@ const HomePlayer = ({
     s: s,
     dispatch: dispatch
   }), /*#__PURE__*/React.createElement(StorytellingDropsRail, {
-    audience: "player"
+    audience: "player",
+    dispatch: dispatch
   }), /*#__PURE__*/React.createElement(TeamMomentsRail, {
     s: s,
     dispatch: dispatch
@@ -4874,7 +5451,8 @@ const HomeParent = ({
     dispatch: dispatch,
     parent: true
   }), /*#__PURE__*/React.createElement(StorytellingDropsRail, {
-    audience: "parent"
+    audience: "parent",
+    dispatch: dispatch
   }), /*#__PURE__*/React.createElement(TeamMomentsRail, {
     s: s,
     dispatch: dispatch
@@ -4915,9 +5493,33 @@ const HomeCoach = ({
       }
     })
   }))), /*#__PURE__*/React.createElement(StorytellingDropsRail, {
-    audience: "coach"
+    audience: "coach",
+    dispatch: dispatch
   }));
 };
+const ThemeToggle = ({ s, dispatch, className = '' }) => {
+  const sysDark = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches : false;
+  const resolved = s.theme === 'system' ? (sysDark ? 'dark' : 'light') : s.theme;
+  const next = s.theme === 'light' ? 'dark' : s.theme === 'dark' ? 'system' : 'light';
+  const label = s.theme === 'system' ? `Theme: auto (${resolved})` : `Theme: ${s.theme}`;
+  return /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch({ type: 'SET_THEME', theme: next }),
+    className: cls("relative w-8 h-8 border-[1.5px] border-black bg-white flex items-center justify-center", className),
+    "aria-label": label,
+    title: label
+  }, resolved === 'dark' ? /*#__PURE__*/React.createElement("svg", {
+    width: 14, height: 14, viewBox: "0 0 14 14", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M11.5 8.6A4.5 4.5 0 0 1 5.4 2.5a5 5 0 1 0 6.1 6.1Z"
+  })) : /*#__PURE__*/React.createElement("svg", {
+    width: 14, height: 14, viewBox: "0 0 14 14", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("circle", { cx: "7", cy: "7", r: "2.5" }), /*#__PURE__*/React.createElement("path", {
+    d: "M7 1.5v1.5M7 11v1.5M1.5 7H3M11 7h1.5M3 3l1.05 1.05M9.95 9.95L11 11M3 11l1.05-1.05M9.95 4.05L11 3"
+  })), s.theme === 'system' && /*#__PURE__*/React.createElement("span", {
+    className: "absolute -bottom-1 -right-1 min-w-[12px] h-[12px] bg-zinc-900 text-white font-mono text-[7px] font-bold flex items-center justify-center px-0.5 leading-none border border-white"
+  }, "A"));
+};
+
 const HomeHeader = ({
   s,
   dispatch,
@@ -4929,42 +5531,12 @@ const HomeHeader = ({
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "px-4 pt-14 pb-3 flex items-center justify-between sticky top-0 z-10 bg-white border-b-[1.5px] border-black"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2"
-  }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => dispatch({
-      type: 'OPEN_SIDE_MENU'
-    }),
-    className: "w-8 h-8 border-[1.5px] border-black bg-white flex items-center justify-center",
-    "aria-label": "Menu"
-  }, /*#__PURE__*/React.createElement("svg", {
-    width: "14",
-    height: "10",
-    viewBox: "0 0 14 10",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2"
-  }, /*#__PURE__*/React.createElement("line", {
-    x1: "0",
-    y1: "1",
-    x2: "14",
-    y2: "1"
-  }), /*#__PURE__*/React.createElement("line", {
-    x1: "0",
-    y1: "5",
-    x2: "14",
-    y2: "5"
-  }), /*#__PURE__*/React.createElement("line", {
-    x1: "0",
-    y1: "9",
-    x2: "14",
-    y2: "9"
-  }))), /*#__PURE__*/React.createElement("div", {
     className: "flex items-baseline gap-2"
   }, /*#__PURE__*/React.createElement("div", {
     className: "px-2 py-0.5 border-[1.5px] border-black font-extrabold text-[13px] tracking-tight"
   }, "HALO"), /*#__PURE__*/React.createElement(Mono, {
     className: "text-[9px] tracking-[0.15em] text-zinc-400 uppercase"
-  }, greeting))), /*#__PURE__*/React.createElement("div", {
+  }, greeting)), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2"
   }, isGuest ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
     onClick: () => {
@@ -4988,47 +5560,68 @@ const HomeHeader = ({
       }), 50);
     },
     className: "px-2.5 py-1 border-[1.5px] border-black bg-black text-white font-mono text-[10px] tracking-[0.12em] uppercase font-bold"
-  }, "Sign up")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+  }, "Sign up")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ThemeToggle, {
+    s: s,
+    dispatch: dispatch
+  }), /*#__PURE__*/React.createElement("button", {
     onClick: () => setNotifOpen(true),
     className: "relative w-8 h-8 border-[1.5px] border-black bg-white flex items-center justify-center",
     "aria-label": "Notifications"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[12px]"
-  }, "\u25D4"), /*#__PURE__*/React.createElement("span", {
-    className: "absolute -top-1 -right-1 min-w-[14px] h-[14px] bg-black text-white font-mono text-[8px] font-bold flex items-center justify-center px-0.5"
-  }, "3")), /*#__PURE__*/React.createElement("button", {
-    onClick: () => dispatch({
-      type: 'SET_TAB',
-      tab: 'profile'
-    }),
-    className: "w-8 h-8 border-[1.5px] border-black bg-white font-mono text-[10px] font-bold flex items-center justify-center"
-  }, persona?.avatarInitial || 'T')))), notifOpen && /*#__PURE__*/React.createElement(NotificationsSheet, {
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: 14,
+    height: 14,
+    viewBox: "0 0 14 14",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M2.7 10.3h8.6V8.6c0-.4-.16-.78-.44-1.06l-.56-.56V5.5a3.3 3.3 0 1 0-6.6 0v1.48l-.56.56c-.28.28-.44.66-.44 1.06v1.7Z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M5.5 10.3a1.5 1.5 0 0 0 3 0"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "absolute -top-1 -right-1 min-w-[14px] h-[14px] bg-red-600 text-white font-mono text-[8px] font-bold flex items-center justify-center px-0.5 leading-none"
+  }, "3"))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch({ type: 'OPEN_SIDE_MENU' }),
+    className: "w-8 h-8 border-[1.5px] border-black bg-white flex items-center justify-center",
+    "aria-label": "Menu"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "10",
+    viewBox: "0 0 14 10",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", { x1: "0", y1: "1", x2: "14", y2: "1" }), /*#__PURE__*/React.createElement("line", { x1: "0", y1: "5", x2: "14", y2: "5" }), /*#__PURE__*/React.createElement("line", { x1: "0", y1: "9", x2: "14", y2: "9" }))))), notifOpen && /*#__PURE__*/React.createElement(NotificationsSheet, {
     onClose: () => setNotifOpen(false),
     dispatch: dispatch
   }));
 };
 
 const NotificationsSheet = ({ onClose, dispatch }) => {
-  const items = [
+  const [items, setItems] = useState([
     { id: 'n1', kind: 'drop',     who: 'Your Drop is ready',  avatar: '\u26AB', body: 'Last night\u2019s Drop unlocked \u2014 6 moments from Varsity vs Northside', when: '2h', isNew: true,  action: () => dispatch({ type: 'PUSH', screen: { name: 'post-game', id: 'gE' } }) },
-    { id: 'n2', kind: 'identity', who: 'New insight',         avatar: '\u25CF', body: '\u201CCrash on the boards\u201D \u2014 your latest read from last night', when: '4h', isNew: true,  action: () => dispatch({ type: 'PUSH', screen: { name: 'identity-detail', id: 'i1' } }) },
+    { id: 'n2', kind: 'identity', who: 'New insight',         avatar: '\u25CF', body: '\u201CCrash on the boards\u201D \u2014 your latest read from last night', when: '4h', isNew: true,  action: () => dispatch({ type: 'OPEN_STORYTELLING_DROP', id: 'i1' }) },
     { id: 'n3', kind: 'game',     who: 'Tipoff Tue 6:30 PM',  avatar: 'V',       body: 'Varsity vs Lincoln \u2014 Eastside Gym', when: '1d', isNew: true,  action: () => dispatch({ type: 'PUSH', screen: { name: 'event-detail', id: 'g1' } }) }
-  ];
+  ]);
   const newCount = items.filter(i => i.isNew).length;
+  const clearOne = (id) => setItems(items.filter(x => x.id !== id));
+  const clearAll = () => setItems([]);
   const onItem = (it) => { onClose(); setTimeout(() => it.action(), 80); };
   return /*#__PURE__*/React.createElement("div", {
-    className: "absolute inset-0 bg-black/55 z-50 flex items-end anim-fade",
+    className: "absolute inset-0 bg-black/40 z-50 anim-fade",
     onClick: onClose
   }, /*#__PURE__*/React.createElement("div", {
     onClick: (e) => e.stopPropagation(),
-    className: "w-full bg-white border-t-[2px] border-black anim-slide-sheet",
-    style: { maxHeight: '78%' }
+    className: "absolute bg-white border-[1.5px] border-black anim-fade",
+    style: { top: 56, right: 12, left: 12, maxHeight: 'calc(100% - 90px)', boxShadow: '6px 6px 0 rgba(0,0,0,0.15)' }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pt-2.5 pb-1 flex items-center justify-center"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "w-10 h-1 bg-zinc-300 rounded-full"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "px-4 pt-2 pb-3 flex items-center justify-between border-b-[1.5px] border-black"
+    className: "absolute -top-[7px] right-3 w-3 h-3 bg-white border-l-[1.5px] border-t-[1.5px] border-black",
+    style: { transform: 'rotate(45deg)' }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "px-4 pt-3 pb-3 flex items-center justify-between border-b-[1.5px] border-black"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2"
   }, /*#__PURE__*/React.createElement(Mono, {
@@ -5041,18 +5634,28 @@ const NotificationsSheet = ({ onClose, dispatch }) => {
     "aria-label": "Close"
   }, "\u2715")), /*#__PURE__*/React.createElement("div", {
     className: "max-h-[420px] overflow-y-auto"
-  }, items.map((it, i) => /*#__PURE__*/React.createElement("button", {
+  }, items.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "px-4 py-10 flex flex-col items-center gap-2"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[10px] tracking-[0.18em] uppercase font-bold text-zinc-400"
+  }, "All caught up"), /*#__PURE__*/React.createElement(Caption, {
+    className: "!normal-case !tracking-normal text-zinc-500",
+    style: { fontSize: 11.5, letterSpacing: 0 }
+  }, "No new notifications.")) : items.map((it, i) => /*#__PURE__*/React.createElement("div", {
     key: it.id,
+    className: cls("w-full px-4 py-3 flex items-start gap-3 relative", i < items.length - 1 ? 'border-b border-dashed border-zinc-300' : '', it.isNew ? 'bg-white' : 'bg-zinc-50')
+  }, /*#__PURE__*/React.createElement("button", {
     onClick: () => onItem(it),
-    className: cls("w-full text-left px-4 py-3 flex items-start gap-3", i < items.length - 1 ? 'border-b border-dashed border-zinc-300' : '', it.isNew ? 'bg-white' : 'bg-zinc-50')
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "w-9 h-9 border-[1.5px] border-black bg-white flex items-center justify-center shrink-0 relative"
+    className: "absolute inset-0 z-0",
+    "aria-label": it.who
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "relative z-10 w-9 h-9 border-[1.5px] border-black bg-white flex items-center justify-center shrink-0 pointer-events-none"
   }, /*#__PURE__*/React.createElement(Mono, {
     className: "text-[10px] font-bold leading-none"
   }, it.avatar), it.isNew && /*#__PURE__*/React.createElement("span", {
     className: "absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-red-600"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "flex-1 min-w-0"
+    className: "relative z-10 flex-1 min-w-0 pointer-events-none"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[12.5px] leading-tight"
   }, /*#__PURE__*/React.createElement("span", {
@@ -5061,14 +5664,17 @@ const NotificationsSheet = ({ onClose, dispatch }) => {
     className: "text-zinc-700"
   }, it.body)), /*#__PURE__*/React.createElement(Mono, {
     className: "text-[9px] tracking-widest uppercase text-zinc-500 mt-1 block"
-  }, it.when, " ago")), /*#__PURE__*/React.createElement("span", {
-    className: "text-[12px] text-zinc-400 shrink-0 mt-1"
-  }, "\u203A")))), /*#__PURE__*/React.createElement("div", {
+  }, it.when, " ago")), /*#__PURE__*/React.createElement("button", {
+    onClick: (e) => { e.stopPropagation(); clearOne(it.id); },
+    className: "relative z-10 w-6 h-6 border-[1.5px] border-black bg-white flex items-center justify-center text-[10px] shrink-0 mt-0.5",
+    "aria-label": "Clear"
+  }, "\u2715")))), /*#__PURE__*/React.createElement("div", {
     className: "border-t-[1.5px] border-black px-4 py-3 flex items-center justify-between bg-zinc-50"
   }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => { onClose(); setTimeout(() => dispatch({ type: 'TOAST', toast: { msg: 'All marked as read' } }), 80); },
-    className: "font-mono text-[10px] tracking-[0.14em] uppercase font-bold text-zinc-600"
-  }, "Mark all read"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => { clearAll(); dispatch({ type: 'TOAST', toast: { msg: 'All cleared' } }); },
+    className: cls("font-mono text-[10px] tracking-[0.14em] uppercase font-bold", items.length === 0 ? 'text-zinc-300' : 'text-zinc-600'),
+    disabled: items.length === 0
+  }, "Clear all"), /*#__PURE__*/React.createElement("button", {
     onClick: () => { onClose(); setTimeout(() => dispatch({ type: 'PUSH', screen: { name: 'notifications-settings' } }), 80); },
     className: "font-mono text-[10px] tracking-[0.14em] uppercase font-bold flex items-center gap-1"
   }, "Settings ", /*#__PURE__*/React.createElement("span", null, "\u203A")))));
@@ -5220,7 +5826,7 @@ const NextGameTeaser = ({ s, dispatch }) => {
   const statLabel = insight.statLabel || '2ND-CH PTS';
   const lastGame = (typeof SEED_GAMES !== 'undefined' && SEED_GAMES.find(g => g.status === 'just-ended')) || null;
   const nextGame = (typeof SEED_GAMES !== 'undefined' && SEED_GAMES.find(g => g.status === 'upcoming')) || null;
-  const goIdentity = () => dispatch && dispatch({ type: 'PUSH', screen: { name: 'identity-detail', id: insight.id || 'i1' } });
+  const goIdentity = () => dispatch && dispatch({ type: 'OPEN_STORYTELLING_DROP', id: insight.id || 'i1' });
   const goLastGame = (e) => { e && e.stopPropagation && e.stopPropagation(); dispatch && dispatch({ type: 'PUSH', screen: { name: 'post-game', id: lastGame ? lastGame.id : 'gE' } }); };
   const goNextGame = () => dispatch && dispatch({ type: 'PUSH', screen: { name: 'event-detail', id: nextGame ? nextGame.id : 'g1' } });
   const lastOpp = lastGame ? lastGame.away.split(' ')[0] : 'Northside';
@@ -5620,7 +6226,8 @@ const STORYTELLING_DROPS = {
   }]
 };
 const StorytellingDropsRail = ({
-  audience = 'player'
+  audience = 'player',
+  dispatch
 }) => {
   const t = useT();
   const items = STORYTELLING_DROPS[audience] || [];
@@ -5635,47 +6242,54 @@ const StorytellingDropsRail = ({
     className: "flex gap-2.5 px-4 overflow-x-auto pb-1 no-scrollbar"
   }, items.map(item => /*#__PURE__*/React.createElement(StorytellingCard, {
     key: item.id,
-    item: item
+    item: item,
+    dispatch: dispatch
   }))));
 };
 const StorytellingCard = ({
-  item
+  item,
+  dispatch
 }) => {
-  const moments = item.momentIds.map(id => SEED_MOMENTS.find(m => m.id === id)).filter(Boolean);
-  return /*#__PURE__*/React.createElement("div", {
-    className: "shrink-0 border-[1.5px] border-black bg-white",
-    style: {
-      width: 260
-    }
+  const count = (item.momentIds && item.momentIds.length) || 3;
+  const w = 230;
+  const h = Math.round(w * 7 / 5); // ~322
+  return /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch && dispatch({ type: 'OPEN_STORYTELLING_DROP', id: item.id }),
+    className: "relative shrink-0 border-[1.5px] border-black bg-zinc-900 overflow-hidden text-left rounded-[10px]",
+    style: { width: w, height: h }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "p-3 border-b-[1.5px] border-black"
-  }, /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[9px] tracking-[0.12em] uppercase text-zinc-500 block mb-2"
-  }, "STORY \xB7 3 MOMENTS"), /*#__PURE__*/React.createElement("div", {
-    className: "flex gap-1.5"
-  }, moments.slice(0, 3).map(m => /*#__PURE__*/React.createElement("div", {
-    key: m.id,
-    className: "relative border-[1.5px] border-black bg-zinc-100 hatch shrink-0 overflow-hidden",
-    style: {
-      width: 70,
-      height: 100
-    }
-  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 hatch-dark bg-zinc-800"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-2 left-2 px-1.5 py-0.5 bg-black/85 backdrop-blur-sm flex items-center gap-1.5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "w-1 h-1 rounded-full bg-red-600 anim-pulse"
+  }), /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9px] font-bold tracking-[0.16em] uppercase text-white leading-none"
+  }, "Story \xB7 ", count, " moments")), /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 flex items-center justify-center"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "w-6 h-6 rounded-full border-[1.5px] border-black bg-white flex items-center justify-center"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[8px] ml-0.5"
-  }, "\u25B6"))), /*#__PURE__*/React.createElement("div", {
-    className: "absolute bottom-0 inset-x-0 px-1 py-0.5 bg-white border-t border-black"
-  }, /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[7.5px] tracking-wider uppercase truncate block"
-  }, m.sub)))))), /*#__PURE__*/React.createElement("div", {
-    className: "p-3"
+    className: "relative",
+    style: { width: 64, height: 76 }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[12.5px] font-extrabold leading-tight mb-1.5"
+    className: "absolute border-[1.5px] border-white/35 bg-zinc-700/60 rounded-[3px]",
+    style: { top: 0, left: 18, width: 38, height: 56, transform: 'rotate(8deg)' }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute border-[1.5px] border-white/60 bg-zinc-800/75 rounded-[3px]",
+    style: { top: 6, left: 12, width: 38, height: 56, transform: 'rotate(-3deg)' }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute border-[1.5px] border-white/90 bg-black rounded-[3px] flex flex-col items-center justify-center",
+    style: { top: 12, left: 6, width: 38, height: 56 }
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[16px] font-black text-white leading-none"
+  }, count), /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[6.5px] tracking-[0.18em] uppercase font-bold text-white/70 mt-1"
+  }, "Moments")))), /*#__PURE__*/React.createElement("div", {
+    className: "absolute bottom-0 inset-x-0 px-3 pt-12 pb-3",
+    style: { background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.95) 100%)' }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-white text-[13px] font-extrabold leading-tight tracking-tight mb-1.5 clip2"
   }, item.title), /*#__PURE__*/React.createElement("div", {
-    className: "text-[11px] text-zinc-700 leading-snug"
+    className: "text-white/75 text-[10.5px] leading-snug clip2"
   }, item.body)));
 };
 
@@ -5796,39 +6410,88 @@ const ActivityTicker = ({
     className: "font-semibold"
   }, a.target)), /*#__PURE__*/React.createElement(Caption, null, a.time)));
 };
+const dropTagEmoji = (tag) => {
+  if (tag === 'top') return '\ud83c\udfaf';   // game-winner / target
+  if (tag === 'hot') return '\ud83d\udd25';   // hot streak
+  if (tag === 'coach') return '\ud83d\udee1\ufe0f'; // coach pick / defense
+  if (tag === 'streak') return '\ud83d\ude80'; // streak / rocket
+  return '\ud83d\udd25';
+};
+const dropEditorialCopy = (moment, game, player) => {
+  const num = player?.number || 7;
+  const title = `${dropTagEmoji(moment.tag)} #${num} Best plays`;
+  let body = '';
+  if (game && game.scoreHome != null && game.scoreAway != null) {
+    const win = game.scoreHome >= game.scoreAway;
+    const opp = (game.away || 'opp').split(' ')[0];
+    if (moment.tag === 'top') {
+      body = win ? `Crushed ${opp} ${game.scoreHome}\u2013${game.scoreAway}. #${num} led with 18 pts, 9 reb.` : `Lost to ${opp} ${game.scoreHome}\u2013${game.scoreAway}. #${num} dropped 22 pts.`;
+    } else if (moment.tag === 'hot') {
+      body = `${win ? 'Beat' : 'Battle vs'} ${opp} ${game.scoreHome}\u2013${game.scoreAway}. #${num} went 9/12 from the field.`;
+    } else if (moment.tag === 'coach') {
+      body = `${win ? 'Held' : 'Pushed'} ${opp} \u2014 #${num} locked the perimeter.`;
+    } else {
+      body = `${win ? 'Took down' : 'Faced'} ${opp} ${game.scoreHome}\u2013${game.scoreAway}. #${num} put up a clutch line.`;
+    }
+  } else {
+    body = `${moment.title || 'Highlight'} \u00b7 ${moment.sub || ''}`;
+  }
+  return { title, body };
+};
+const EditorialDropThumb = ({ moment, onClick }) => {
+  const w = 150;
+  const h = Math.round(w * 16 / 9); // ~267 — 25% bigger than md (120w)
+  const personId = moment?.personId === 'self' ? 'r1' : moment?.personId;
+  const player = personId && typeof ROSTER !== 'undefined' ? ROSTER.find(p => p.id === personId) : null;
+  const game = moment?.gameId && typeof SEED_GAMES !== 'undefined' ? SEED_GAMES.find(g => g.id === moment.gameId) : null;
+  const { title, body } = dropEditorialCopy(moment, game, player);
+  const durationStr = moment?.duration != null ? `0:${String(moment.duration).padStart(2, '0')}` : null;
+  return /*#__PURE__*/React.createElement("button", {
+    onClick: onClick,
+    className: "relative shrink-0 border-[1.5px] border-black bg-zinc-900 overflow-hidden text-left rounded-[10px]",
+    style: { width: w, height: h }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 hatch-dark bg-zinc-800"
+  }), durationStr && /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-2 left-2 px-1.5 py-0.5 bg-black/85 backdrop-blur-sm"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9px] font-bold leading-none text-white tabular-nums"
+  }, durationStr)), /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 flex items-center justify-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-11 h-11 rounded-full border-[1.5px] border-white/85 bg-black/30 backdrop-blur-sm flex items-center justify-center"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[14px] ml-0.5 text-white"
+  }, "\u25B6"))), /*#__PURE__*/React.createElement("div", {
+    className: "absolute bottom-0 inset-x-0 px-2.5 pt-10 pb-2.5",
+    style: { background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.95) 100%)' }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-white text-[12.5px] font-extrabold leading-tight tracking-tight mb-1"
+  }, title), /*#__PURE__*/React.createElement("div", {
+    className: "text-white/80 text-[10px] leading-snug clip2"
+  }, body)));
+};
 const DropsSection = ({
   s,
   dispatch
 }) => {
   const t = useT();
-  // Drops are always "about me" first — filter to self moments only.
-  // Storytelling drops live in their own rail (StorytellingDropsRail).
   const recent = SEED_MOMENTS.filter(m => m.personId === 'self').slice(0, 6);
   return /*#__PURE__*/React.createElement("div", {
     className: "mb-4"
   }, /*#__PURE__*/React.createElement("div", {
     className: "px-4 flex items-baseline justify-between mb-2"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[13px] font-bold"
+    className: "text-[13px] font-bold tracking-tight"
   }, t('dropsThisWeek')), /*#__PURE__*/React.createElement("button", {
-    onClick: () => dispatch({
-      type: 'TOAST',
-      toast: {
-        msg: t('drops')
-      }
-    }),
+    onClick: () => dispatch({ type: 'TOAST', toast: { msg: t('drops') } }),
     className: "font-mono text-[9.5px] tracking-[0.12em] uppercase text-zinc-500"
   }, t('allArrow'))), /*#__PURE__*/React.createElement("div", {
-    className: "flex gap-2 px-4 overflow-x-auto pb-1 no-scrollbar"
-  }, recent.map((m, i) => /*#__PURE__*/React.createElement(VThumb, {
+    className: "flex gap-2.5 px-4 overflow-x-auto pb-1 no-scrollbar"
+  }, recent.map((m, i) => /*#__PURE__*/React.createElement(EditorialDropThumb, {
     key: m.id,
     moment: m,
-    size: "md",
-    onClick: () => dispatch({
-      type: 'OPEN_HIGHLIGHTS',
-      ids: recent.map(x => x.id),
-      index: i
-    })
+    onClick: () => dispatch({ type: 'OPEN_HIGHLIGHTS', ids: recent.map(x => x.id), index: i })
   }))));
 };
 const RecentMomentsRail = ({
@@ -6007,11 +6670,7 @@ const DropsHero = ({
   className: "text-[16px] font-extrabold leading-tight mt-0.5"
 }, moment?.title), /*#__PURE__*/React.createElement("div", {
   className: "flex items-center gap-2 mt-2"
-}, /*#__PURE__*/React.createElement("div", {
-  className: "px-1.5 py-0.5 border border-black"
-}, /*#__PURE__*/React.createElement(Mono, {
-  className: "text-[9px] font-bold"
-}, "\u2605 ", moment?.reactions)), /*#__PURE__*/React.createElement("button", {
+}, /*#__PURE__*/React.createElement("button", {
   onClick: () => dispatch({
     type: 'OPEN_CLIPPER',
     payload: {
@@ -7118,11 +7777,11 @@ const IdentitySection = ({
       className: "px-4 pt-4"
     }, /*#__PURE__*/React.createElement(Label, {
       className: "text-zinc-500 mb-2 block"
-    }, "YOUR IDENTITY"), /*#__PURE__*/React.createElement("div", {
+    }, "Your Season Insights"), /*#__PURE__*/React.createElement("div", {
       className: "border-[1.5px] border-black p-4 bg-white"
     }, /*#__PURE__*/React.createElement("div", {
       className: "text-[14px] font-extrabold mb-1"
-    }, "Generate your Halo identity"), /*#__PURE__*/React.createElement(Caption, {
+    }, "Generate your season insights"), /*#__PURE__*/React.createElement(Caption, {
       className: "!text-zinc-600 block mb-3 leading-relaxed normal-case tracking-normal",
       style: {
         fontSize: 11.5,
@@ -7136,19 +7795,28 @@ const IdentitySection = ({
       className: "w-full py-3 border-[1.5px] border-black bg-black text-white font-mono text-[11px] tracking-[0.15em] uppercase font-bold flex items-center justify-center gap-2"
     }, /*#__PURE__*/React.createElement("span", null, "\u25B6"), " GENERATE")));
   }
-  // today + log
-  const today = {
-    date: 'TODAY · APR 4',
+  // today + log — entries[0] is today, then identityLog (older first)
+  const todayInsight = {
+    id: 'today',
+    date: 'TODAY \xB7 APR 4',
     title: 'Team-first scorer',
-    body: "78% of your assists become baskets when you're on-court. You're a build-up player — Coach Miles trusts you to swing it."
+    body: "78% of your assists become baskets when you're on-court. You're a build-up player \u2014 Coach Miles trusts you to swing it."
   };
+  const entries = [todayInsight, ...(s.identityLog || [])];
+  const [viewIndex, setViewIndex] = useState(0);
+  const cur = entries[Math.min(viewIndex, entries.length - 1)] || todayInsight;
+  const atNewest = viewIndex === 0;
+  const atOldest = viewIndex === entries.length - 1;
+  const goNewer = () => !atNewest && setViewIndex(i => Math.max(0, i - 1));
+  const goOlder = () => !atOldest && setViewIndex(i => Math.min(entries.length - 1, i + 1));
+  const headerLabel = atNewest ? "Your Season Insights \xB7 Today" : "Your Season Insights";
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "px-4 pt-4"
   }, /*#__PURE__*/React.createElement("div", {
     className: "mb-2 flex items-center justify-between"
   }, /*#__PURE__*/React.createElement(Label, {
     className: "text-zinc-500"
-  }, "YOUR IDENTITY \xB7 TODAY"), /*#__PURE__*/React.createElement("button", {
+  }, headerLabel), /*#__PURE__*/React.createElement("button", {
     onClick: () => dispatch({ type: 'SET_IDENTITY_STATE', state: 'first' }),
     className: "w-5 h-5 border-[1.5px] border-black bg-white flex items-center justify-center text-[10px] leading-none",
     "aria-label": "Close"
@@ -7160,26 +7828,35 @@ const IdentitySection = ({
     className: "flex items-center justify-between mb-2"
   }, /*#__PURE__*/React.createElement(Mono, {
     className: "text-[8.5px] tracking-widest font-bold uppercase"
-  }, today.date), /*#__PURE__*/React.createElement(Caption, null, "REFRESHES TOMORROW")), /*#__PURE__*/React.createElement("div", {
+  }, cur.date), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: goOlder,
+    disabled: atOldest,
+    className: cls("w-6 h-6 border-[1.5px] flex items-center justify-center text-[12px] leading-none", atOldest ? 'border-zinc-200 text-zinc-300' : 'border-black text-black bg-white'),
+    "aria-label": "Older insight"
+  }, "\u2039"), /*#__PURE__*/React.createElement("button", {
+    onClick: goNewer,
+    disabled: atNewest,
+    className: cls("w-6 h-6 border-[1.5px] flex items-center justify-center text-[12px] leading-none", atNewest ? 'border-zinc-200 text-zinc-300' : 'border-black text-black bg-white'),
+    "aria-label": "Newer insight"
+  }, "\u203A"))), /*#__PURE__*/React.createElement("div", {
     className: "text-[14px] font-extrabold leading-tight mb-1"
-  }, "\"", today.title, "\""), /*#__PURE__*/React.createElement("div", {
+  }, "\"", cur.title, "\""), /*#__PURE__*/React.createElement("div", {
     className: "text-[11.5px] leading-relaxed text-zinc-700"
-  }, today.body)))), /*#__PURE__*/React.createElement("div", {
+  }, cur.body)))), /*#__PURE__*/React.createElement("div", {
     className: "px-4 pt-4"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-baseline justify-between mb-2"
   }, /*#__PURE__*/React.createElement(Label, {
     className: "text-zinc-500"
-  }, "IDENTITY LOG \xB7 ", s.identityLog.length, " ENTRIES"), /*#__PURE__*/React.createElement(Caption, null, "TAP TO READ")), /*#__PURE__*/React.createElement("div", {
+  }, "Insights Log \xB7 ", s.identityLog.length, " ENTRIES"), /*#__PURE__*/React.createElement(Caption, null, "TAP TO READ")), /*#__PURE__*/React.createElement("div", {
     className: "border-[1.5px] border-black bg-white divide-y-[1.5px] divide-black"
   }, s.identityLog.slice(0, 5).map(item => /*#__PURE__*/React.createElement("button", {
     key: item.id,
     onClick: () => dispatch({
-      type: 'PUSH',
-      screen: {
-        name: 'identity-detail',
-        id: item.id
-      }
+      type: 'OPEN_STORYTELLING_DROP',
+      id: item.id
     }),
     className: "w-full p-3 flex items-center gap-3 text-left hover:bg-zinc-50"
   }, /*#__PURE__*/React.createElement(Mono, {
@@ -7272,180 +7949,97 @@ const LiveGameScreen = ({
   dispatch
 }) => {
   const game = findGame(id) || SEED_GAMES.find(g => g.status === 'live');
-  if (!game) return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BackBar, {
-    onBack: () => dispatch({
-      type: 'POP'
-    }),
-    title: "Live"
-  }));
-  const [reconnecting, setReconnecting] = useState(false);
-  const [retryCount, setRetryCount] = useState(0); // 1..3 = auto retries; 4 = manual "Reload stream"
-  const [behindLive, setBehindLive] = useState(false);
-  // Auto-retry sequence: 3 attempts, 2.5s apart, then surface manual reload
+  if (!game) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "absolute inset-0 z-50 bg-black flex items-center justify-center"
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => dispatch({ type: 'POP' }),
+      className: "absolute top-4 right-4 w-9 h-9 flex items-center justify-center text-white text-[18px]"
+    }, "\u2715"), /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[10px] tracking-widest uppercase text-white/70"
+    }, "No live game"));
+  }
+  const [playing, setPlaying] = useState(true);
+  // Fake live clock — derive a minute:second from kickoffInSec, and update every second
+  const initialSecs = Math.max(0, -1 * (game.kickoffInSec || -1248));
+  const [secs, setSecs] = useState(initialSecs);
   useEffect(() => {
-    if (!reconnecting) return;
-    if (retryCount >= 4) return; // manual stage
-    const t = setTimeout(() => setRetryCount(c => c + 1), 2500);
-    return () => clearTimeout(t);
-  }, [reconnecting, retryCount]);
-  const startReconnect = () => {
-    setReconnecting(true);
-    setRetryCount(1);
-  };
-  const finishReconnect = () => {
-    setReconnecting(false);
-    setRetryCount(0);
-    dispatch({ type: 'TOAST', toast: { msg: 'Stream reloaded ✓' } });
-  };
-  const goLive = () => {
-    setBehindLive(false);
-    dispatch({
-      type: 'TOAST',
-      toast: {
-        msg: 'Jumping to live edge ✓'
-      }
-    });
-  };
-  const t = useT();
-  // live box score · seed periods up to current
-  const periodIndex = {
-    'Q1': 1,
-    'Q2': 2,
-    'Q3': 3,
-    'Q4': 4
-  }[game.period] || 2;
-  const homePeriods = [10, 18, 12, 15].slice(0, periodIndex);
-  const awayPeriods = [12, 12, 14, 12].slice(0, periodIndex);
-  // pad with empty for upcoming periods
-  while (homePeriods.length < 4) homePeriods.push(null);
-  while (awayPeriods.length < 4) awayPeriods.push(null);
+    if (!playing) return;
+    const t = setInterval(() => setSecs(v => v + 1), 1000);
+    return () => clearInterval(t);
+  }, [playing]);
+  const mm = Math.floor(secs / 60);
+  const ss = secs % 60;
+  const runtime = `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+  const period = game.period || 'Q1';
   return /*#__PURE__*/React.createElement("div", {
-    className: "bg-white anim-fade min-h-full pb-6"
-  }, /*#__PURE__*/React.createElement(BackBar, {
-    onBack: () => dispatch({
-      type: 'POP'
-    }),
-    title: `${game.home} · ${game.away}`
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "relative w-full aspect-[16/9] border-b-[1.5px] border-black bg-zinc-100 hatch"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "absolute top-3 left-3 right-3 flex items-center justify-between"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5 px-1.5 py-0.5 bg-red-600"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "w-1 h-1 rounded-full bg-white anim-pulse"
-  }), /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[9px] tracking-widest font-bold uppercase text-white"
-  }, t('liveOnly'), " \xB7 ", game.period)), /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[12px] font-black tabular-nums px-1.5 py-0.5 bg-white border border-black"
-  }, game.scoreHome, "\u2013", game.scoreAway)), /*#__PURE__*/React.createElement("div", {
-    className: "absolute inset-0 flex items-center justify-center"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "w-14 h-14 rounded-full border-[2px] border-black bg-white flex items-center justify-center"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[18px] ml-0.5"
-  }, "\u25B6"))), reconnecting && /*#__PURE__*/React.createElement("div", {
-    className: "absolute inset-0 flex items-center justify-center bg-black/85 z-10 anim-fade"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-center px-4"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "font-mono text-[12px] tracking-widest uppercase text-white font-bold mb-2 anim-pulse"
-  }, retryCount < 4 ? t('reconnecting') : "STREAM UNAVAILABLE"), retryCount < 4 && retryCount > 0 && /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[10.5px] tracking-widest uppercase text-white block mb-1 nums-ltr"
-  }, "Attempt ", retryCount, " / 3"), /*#__PURE__*/React.createElement(Caption, {
-    className: "!text-white block mb-3 !normal-case !tracking-normal",
-    style: { fontSize: 11, letterSpacing: 0 }
-  }, retryCount < 4 ? "Holding your spot. We'll resume automatically." : "Couldn't restore stream after 3 tries."), retryCount >= 4 && /*#__PURE__*/React.createElement("button", {
-    onClick: finishReconnect,
-    className: "px-3 py-2 border-[1.5px] border-white text-white font-mono text-[10px] tracking-widest uppercase font-bold"
-  }, t('reloadStream')))), /*#__PURE__*/React.createElement("div", {
-    className: "absolute inset-x-0 bottom-0 p-2.5 bg-white border-t-[1.5px] border-black flex items-center justify-between"
-  }, /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[10px] tracking-wider uppercase"
-  }, "11:48 \xB7 ", game.period, " \xB7 ", t('liveOnly')), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5"
-  }, behindLive && /*#__PURE__*/React.createElement("button", {
-    onClick: goLive,
-    className: "px-2.5 py-1 border-[1.5px] border-black bg-red-600 text-white font-mono text-[10px] tracking-widest uppercase font-bold flex items-center gap-1.5"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "w-1 h-1 rounded-full bg-white anim-pulse"
-  }), t('goLive')), /*#__PURE__*/React.createElement("button", {
-    onClick: startReconnect,
-    className: "px-2 py-1 border-[1.5px] border-black bg-white font-mono text-[9px] tracking-widest uppercase font-bold",
-    title: "simulate reconnect"
-  }, "\u27F3"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => dispatch({
-      type: 'OPEN_CLIPPER',
-      payload: {
-        gameId: game.id,
-        time: '15s window'
-      }
-    }),
-    className: "px-2.5 py-1 border-[1.5px] border-black bg-black text-white font-mono text-[10px] tracking-widest uppercase font-bold"
-  }, "\u2702 ", t('makeAMoment'))))), /*#__PURE__*/React.createElement("div", {
-    className: "px-4 pt-4"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-baseline justify-between mb-2"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[13px] font-bold tracking-tight"
-  }, "Box score"), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1 px-1.5 py-0.5 bg-red-600"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "w-1 h-1 rounded-full bg-white anim-pulse"
-  }), /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[8.5px] tracking-widest font-bold uppercase text-white"
-  }, t('liveOnly')))), /*#__PURE__*/React.createElement("div", {
-    className: "border-[1.5px] border-black bg-white p-4 grid grid-cols-2 mb-3"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-center border-r-[1.5px] border-dashed border-black pr-3"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[12px] font-bold"
-  }, game.home), /*#__PURE__*/React.createElement("div", {
-    className: "font-mono text-[34px] font-black tabular-nums leading-none mt-1"
-  }, game.scoreHome)), /*#__PURE__*/React.createElement("div", {
-    className: "text-center pl-3"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[12px] font-bold"
-  }, game.away), /*#__PURE__*/React.createElement("div", {
-    className: "font-mono text-[34px] font-black tabular-nums leading-none mt-1"
-  }, game.scoreAway))), /*#__PURE__*/React.createElement("div", {
-    className: "border-[1.5px] border-black overflow-hidden"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "grid grid-cols-6 border-b-[1.5px] border-black bg-zinc-100"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "px-2 py-1.5 col-span-2 border-r border-black"
-  }, /*#__PURE__*/React.createElement(Caption, null, "TEAM")), ['Q1', 'Q2', 'Q3', 'Q4'].map(q => /*#__PURE__*/React.createElement("div", {
-    key: q,
-    className: cls('px-2 py-1.5 border-r border-black last:border-r-0 text-center', q === game.period ? 'bg-red-600' : '')
-  }, /*#__PURE__*/React.createElement(Mono, {
-    className: cls('text-[9px] tracking-widest font-bold uppercase', q === game.period ? 'text-white' : 'text-zinc-500')
-  }, q === game.period ? `● ${q}` : q)))), [{
-    name: game.home,
-    vals: homePeriods
-  }, {
-    name: game.away,
-    vals: awayPeriods
-  }].map((row, ri) => /*#__PURE__*/React.createElement("div", {
-    key: ri,
-    className: cls('grid grid-cols-6', ri === 0 ? 'border-b border-dashed border-black' : '')
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "px-2 py-2 col-span-2 border-r border-black"
-  }, /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[10px] font-bold truncate"
-  }, row.name)), row.vals.map((v, qi) => /*#__PURE__*/React.createElement("div", {
-    key: qi,
-    className: "px-2 py-2 border-r border-black last:border-r-0 text-center"
-  }, v == null ? /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[12px] text-zinc-300"
-  }, "\u2013") : /*#__PURE__*/React.createElement(Mono, {
-    className: "text-[12px] font-bold"
-  }, v)))))), /*#__PURE__*/React.createElement(Caption, {
-    className: "!normal-case !tracking-normal block mt-3 leading-relaxed",
-    style: {
-      fontSize: 11.5,
-      letterSpacing: 0
-    }
-  }, "Highlights and play-by-play will be available after the game ends.")));
+    className: "absolute inset-0 z-40 bg-black anim-fade flex flex-col"
+  },
+    /*#__PURE__*/React.createElement("button", {
+      onClick: () => dispatch({ type: 'POP' }),
+      className: "absolute top-4 right-4 z-30 w-9 h-9 flex items-center justify-center text-white text-[18px]",
+      "aria-label": "Close"
+    }, "\u2715"),
+    /*#__PURE__*/React.createElement("div", { className: "flex-1" }),
+    /*#__PURE__*/React.createElement("div", {
+      className: "relative w-full bg-zinc-900 overflow-hidden",
+      style: { aspectRatio: '16 / 9' }
+    },
+      /*#__PURE__*/React.createElement("div", { className: "absolute inset-0 hatch-dark" }),
+      /*#__PURE__*/React.createElement("div", {
+        className: "absolute inset-0 flex items-center justify-center"
+      }, /*#__PURE__*/React.createElement("button", {
+        onClick: () => setPlaying(p => !p),
+        className: "w-16 h-16 rounded-full border-[1.5px] border-white/80 bg-black/30 backdrop-blur-sm flex items-center justify-center",
+        "aria-label": playing ? "Pause" : "Play"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-white text-[20px] ml-1"
+      }, playing ? "\u2161" : "\u25B6"))),
+    ),
+    /*#__PURE__*/React.createElement("div", {
+      className: "px-4 pt-4 flex flex-col gap-1.5"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1 px-1.5 py-0.5 bg-red-600"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "w-1 h-1 rounded-full bg-white anim-pulse"
+    }), /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[9px] tracking-[0.18em] font-bold uppercase text-white"
+    }, "LIVE"))), /*#__PURE__*/React.createElement("div", {
+      className: "text-white text-[14px] font-extrabold tracking-tight leading-tight"
+    }, game.home, " vs ", game.away)),
+    /*#__PURE__*/React.createElement("div", { className: "flex-1" }),
+    /*#__PURE__*/React.createElement("div", {
+      className: "absolute bottom-0 inset-x-0 z-30 px-4 py-4 flex items-center gap-3"
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => setPlaying(p => !p),
+      className: "w-9 h-9 rounded-full border-[1.5px] border-white/80 flex items-center justify-center text-white shrink-0",
+      "aria-label": playing ? "Pause" : "Play"
+    }, /*#__PURE__*/React.createElement("span", { className: "text-[12px]" }, playing ? "\u2161" : "\u25B6")),
+      /*#__PURE__*/React.createElement("div", {
+        className: "flex-1 h-1 bg-white/20 relative"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "h-full bg-red-600",
+        style: { width: '92%' }
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-white",
+        style: { left: '92%' }
+      })),
+      /*#__PURE__*/React.createElement(Mono, {
+        className: "text-[9.5px] tracking-[0.14em] font-bold uppercase text-white/80 tabular-nums shrink-0"
+      }, "LIVE \xB7 ", runtime),
+      /*#__PURE__*/React.createElement("button", {
+        onClick: () => dispatch({ type: 'TOAST', toast: { msg: 'Fullscreen \u2014 prototype only' } }),
+        className: "w-8 h-8 flex items-center justify-center text-white shrink-0",
+        "aria-label": "Fullscreen"
+      }, /*#__PURE__*/React.createElement("svg", {
+        width: 14, height: 14, viewBox: "0 0 14 14", fill: "none", stroke: "currentColor", strokeWidth: 1.5
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M2 5V2h3M9 2h3v3M12 9v3H9M5 12H2V9"
+      })))
+    )
+  );
 };
 const PBPRow = ({
   play,
@@ -7501,7 +8095,7 @@ const OtherPlayersSection = ({ game, moments, allMoments, dispatch }) => {
     dispatch({ type: 'OPEN_HIGHLIGHTS', ids, index: 0 });
   };
   return /*#__PURE__*/React.createElement("div", {
-    className: "px-4 mt-2 mb-4"
+    className: "px-4 mt-6"
   }, /*#__PURE__*/React.createElement(Label, {
     className: "text-zinc-500 mb-2 block"
   }, "Other players"), /*#__PURE__*/React.createElement("div", {
@@ -7574,23 +8168,71 @@ const PostGameScreen = ({
     className: "font-mono text-[36px] font-black tabular-nums leading-none"
   }, game.scoreHome, /*#__PURE__*/React.createElement("span", {
     className: "text-zinc-300 mx-1.5"
-  }, "\xB7"), game.scoreAway))), recap && /*#__PURE__*/React.createElement("div", {
-    className: "px-4 pt-4 pb-2"
+  }, "\xB7"), game.scoreAway))), /*#__PURE__*/React.createElement("div", {
+    className: "px-4 mt-5"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[13px] font-bold tracking-tight mb-2"
+    className: "text-[13px] font-bold tracking-tight mb-3"
+  }, "Full game"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => dispatch({ type: 'PUSH', screen: { name: 'live-game', id: game.id } }),
+    className: "relative shrink-0 border-[1.5px] border-black bg-white overflow-hidden text-left w-full",
+    style: { aspectRatio: '16 / 9' }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 hatch bg-zinc-100"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-2 left-2 px-1.5 py-0.5 bg-black"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[8.5px] tracking-[0.16em] uppercase font-bold text-white leading-none"
+  }, "FULL GAME \xB7 16:9")), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-2 right-2 px-1.5 py-0.5 bg-white border border-black"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9px] font-bold leading-none tabular-nums"
+  }, "1:32:00")), /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 flex items-center justify-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-12 h-12 rounded-full border-[1.5px] border-black bg-white flex items-center justify-center"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[16px] ml-0.5"
+  }, "\u25B6"))), /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-x-0 bottom-0 px-2.5 py-2 bg-white border-t-[1.5px] border-black"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[12.5px] font-bold leading-tight"
+  }, "Watch the full game"), /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9px] tracking-wider uppercase text-zinc-500 mt-0.5 block"
+  }, game.home, " ", game.scoreHome, " \xB7 ", game.away, " ", game.scoreAway)))), recap && /*#__PURE__*/React.createElement("div", {
+    className: "px-4 mt-6"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[13px] font-bold tracking-tight mb-3"
   }, "Game highlight"), /*#__PURE__*/React.createElement(RecapCard, {
     recap: recap,
     big: true,
     onClick: () => dispatch({
       type: 'TOAST',
       toast: {
-        msg: 'Playing game highlight…'
+        msg: 'Playing game highlight\u2026'
       }
     })
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "px-4 pt-3 pb-2"
+  })), myMoments.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "mt-6"
+  }, /*#__PURE__*/React.createElement(Rail, {
+    title: "Your Highlights"
+  }, myMoments.map((m, i) => /*#__PURE__*/React.createElement(VThumb, {
+    key: m.id,
+    moment: m,
+    size: "md",
+    onClick: () => dispatch({
+      type: 'OPEN_HIGHLIGHTS',
+      ids: myMoments.map(x => x.id),
+      index: i
+    })
+  })))), /*#__PURE__*/React.createElement(OtherPlayersSection, {
+    game: game,
+    moments: moments,
+    allMoments: SEED_MOMENTS,
+    dispatch: dispatch
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "px-4 mt-6"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[13px] font-bold tracking-tight mb-2"
+    className: "text-[13px] font-bold tracking-tight mb-3"
   }, "Your game stats"), /*#__PURE__*/React.createElement("div", {
     className: "border-[1.5px] border-black bg-zinc-50 p-3 grid grid-cols-3 gap-3 text-center"
   }, [{
@@ -7606,72 +8248,114 @@ const PostGameScreen = ({
     key: s.l
   }, /*#__PURE__*/React.createElement("div", {
     className: "font-mono text-[16px] font-black"
-  }, s.v), /*#__PURE__*/React.createElement(Caption, null, s.l))))), myMoments.length > 0 && /*#__PURE__*/React.createElement(Rail, {
-    title: "Your Highlights"
-  }, myMoments.map((m, i) => /*#__PURE__*/React.createElement(VThumb, {
-    key: m.id,
-    moment: m,
-    size: "md",
-    onClick: () => dispatch({
-      type: 'OPEN_HIGHLIGHTS',
-      ids: myMoments.map(x => x.id),
-      index: i
-    })
-  }))), /*#__PURE__*/React.createElement(OtherPlayersSection, {
-    game: game,
-    moments: moments,
-    allMoments: SEED_MOMENTS,
-    dispatch: dispatch
-  }), allPbp.length > 0 && /*#__PURE__*/React.createElement("div", {
-    className: "px-4 mt-2 mb-4"
+  }, s.v), /*#__PURE__*/React.createElement(Caption, null, s.l))))), /*#__PURE__*/React.createElement(TeamStatsSection, {
+    game: game
+  }), /*#__PURE__*/React.createElement(PlayerStatsSection, {
+    game: game
+  }));
+};
+
+const TeamStatsSection = ({ game }) => {
+  const fgmH = Math.max(8, Math.round((game.scoreHome || 50) / 2));
+  const fgmA = Math.max(8, Math.round((game.scoreAway || 40) / 2));
+  const rows = [
+    { label: 'Field goals',   home: `${fgmH}/100`, away: `${fgmA}/100`, hv: fgmH, av: fgmA, max: 100 },
+    { label: 'Field goals %', home: '46%',          away: '38%',         hv: 46,   av: 38,   max: 100 },
+    { label: 'Possessions',   home: '78',           away: '74',          hv: 78,   av: 74,   max: 100 },
+    { label: '3-Pointers',    home: '9',            away: '5',           hv: 9,    av: 5,    max: 15  },
+    { label: 'Steals',        home: '7',            away: '4',           hv: 7,    av: 4,    max: 12  },
+    { label: 'Rebounds',      home: '34',           away: '29',          hv: 34,   av: 29,   max: 50  },
+    { label: 'Assists',       home: '18',           away: '12',          hv: 18,   av: 12,   max: 25  },
+    { label: 'Free Throw %',  home: '78%',          away: '64%',         hv: 78,   av: 64,   max: 100 }
+  ];
+  return /*#__PURE__*/React.createElement("div", {
+    className: "px-4 mt-6"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-baseline justify-between mb-2"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[13px] font-bold"
-  }, "Play-by-play"), /*#__PURE__*/React.createElement(Caption, null, filtered.length, " OF ", allPbp.length)), /*#__PURE__*/React.createElement("div", {
-    className: "flex gap-1.5 overflow-x-auto no-scrollbar -mx-1 px-1 pb-2"
-  }, [{
-    key: 'all',
-    label: 'All'
-  }, {
-    key: 'scoring',
-    label: 'Scoring'
-  }, {
-    key: 'defense',
-    label: 'Defense'
-  }, {
-    key: 'turnovers',
-    label: 'Turnovers'
-  }, {
-    key: 'num7',
-    label: '#7 only'
-  }].map(c => /*#__PURE__*/React.createElement("button", {
-    key: c.key,
-    onClick: () => dispatch({
-      type: 'SET_PBP_FILTER',
-      f: c.key
-    }),
-    className: cls('shrink-0 px-2 py-0.5 border-[1.5px] border-black font-mono text-[10px] tracking-[0.08em] uppercase font-bold', s.pbpFilter === c.key ? 'bg-black text-white' : 'bg-white')
-  }, c.label))), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-1"
-  }, filtered.map(p => /*#__PURE__*/React.createElement(PBPRow, {
-    key: p.id,
-    play: p,
-    onSeek: () => dispatch({
-      type: 'TOAST',
-      toast: {
-        msg: `Seeking to ${p.clock} ${p.period}…`
-      }
-    }),
-    onClip: () => dispatch({
-      type: 'OPEN_CLIPPER',
-      payload: {
-        gameId: game.id,
-        time: p.clock,
-        momentId: p.momentId
-      }
-    })
-  })))));
+    className: "text-[13px] font-bold tracking-tight mb-3"
+  }, "Team stats"), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-3"
+  }, rows.map(r => /*#__PURE__*/React.createElement("div", {
+    key: r.label,
+    className: "grid grid-cols-[1fr_auto_1fr] items-center gap-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "min-w-0"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[12px] font-bold tabular-nums block leading-none mb-1"
+  }, r.home), /*#__PURE__*/React.createElement("div", {
+    className: "h-1 bg-zinc-100 rounded-full overflow-hidden flex justify-end",
+    dir: "rtl"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "h-full bg-red-600 rounded-full",
+    style: { width: `${Math.max(6, Math.min(100, (r.hv / r.max) * 100))}%` }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "text-[12px] font-bold text-center px-2 whitespace-nowrap"
+  }, r.label), /*#__PURE__*/React.createElement("div", {
+    className: "min-w-0 text-right"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[12px] font-bold tabular-nums block leading-none mb-1"
+  }, r.away), /*#__PURE__*/React.createElement("div", {
+    className: "h-1 bg-zinc-100 rounded-full overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "h-full bg-zinc-400 rounded-full",
+    style: { width: `${Math.max(6, Math.min(100, (r.av / r.max) * 100))}%` }
+  })))))));
+};
+
+const PlayerStatsSection = ({ game }) => {
+  const [tab, setTab] = useState('home');
+  const homeRoster = (typeof ROSTER !== 'undefined' ? ROSTER : []);
+  const awayRoster = (typeof AWAY_ROSTER !== 'undefined' ? AWAY_ROSTER : []);
+  const stats = {
+    r1: { min: 28, pts: 18, reb: 7,  ast: 5 },
+    r2: { min: 24, pts: 12, reb: 4,  ast: 6 },
+    r3: { min: 22, pts: 9,  reb: 8,  ast: 1 },
+    r4: { min: 26, pts: 11, reb: 12, ast: 0 },
+    r5: { min: 18, pts: 6,  reb: 3,  ast: 2 },
+    r6: { min: 14, pts: 4,  reb: 1,  ast: 1 },
+    a1: { min: 30, pts: 14, reb: 5,  ast: 7 },
+    a2: { min: 26, pts: 10, reb: 6,  ast: 2 },
+    a3: { min: 24, pts: 8,  reb: 4,  ast: 3 },
+    a4: { min: 22, pts: 6,  reb: 9,  ast: 1 },
+    a5: { min: 20, pts: 5,  reb: 3,  ast: 4 },
+    a6: { min: 16, pts: 5,  reb: 2,  ast: 0 }
+  };
+  const players = tab === 'home' ? homeRoster : awayRoster;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "px-4 mt-6 mb-8"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[13px] font-bold tracking-tight mb-3"
+  }, "Player stats"), /*#__PURE__*/React.createElement("div", {
+    className: "flex border-b-[1.5px] border-zinc-200 mb-2"
+  }, ['home', 'away'].map(k => /*#__PURE__*/React.createElement("button", {
+    key: k,
+    onClick: () => setTab(k),
+    className: cls('relative px-1 pb-2 mr-5 text-[14px] font-bold', tab === k ? 'text-black' : 'text-zinc-400')
+  }, k === 'home' ? game.home : game.away, tab === k && /*#__PURE__*/React.createElement("div", {
+    className: cls('absolute left-0 right-0 -bottom-[1.5px] h-[2px]', k === 'home' ? 'bg-red-600' : 'bg-blue-700')
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "grid gap-x-2 py-2 border-b border-zinc-200",
+    style: { gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr' }
+  }, ['Player', 'Min', 'Pts', 'Reb', 'Ast'].map((h, i) => /*#__PURE__*/React.createElement(Mono, {
+    key: h,
+    className: cls('text-[10px] tracking-[0.12em] uppercase font-bold text-zinc-400', i > 0 ? 'text-center' : '')
+  }, h))), players.map(p => {
+    const st = stats[p.id] || { min: 18, pts: 6, reb: 2, ast: 1 };
+    return /*#__PURE__*/React.createElement("div", {
+      key: p.id,
+      className: "grid gap-x-2 py-2.5 border-b border-dashed border-zinc-200 items-center",
+      style: { gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr' }
+    }, /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[12px] font-bold text-zinc-700 tabular-nums"
+    }, "#", p.number), /*#__PURE__*/React.createElement("div", {
+      className: "text-[13px] font-bold text-center tabular-nums"
+    }, st.min), /*#__PURE__*/React.createElement("div", {
+      className: "text-[13px] font-bold text-center tabular-nums"
+    }, st.pts), /*#__PURE__*/React.createElement("div", {
+      className: "text-[13px] font-bold text-center tabular-nums"
+    }, st.reb), /*#__PURE__*/React.createElement("div", {
+      className: "text-[13px] font-bold text-center tabular-nums"
+    }, st.ast));
+  }));
 };
 
 /* ===== EVENT DETAIL (3 states + tabs) ===== */
@@ -8395,7 +9079,7 @@ const AthleteProfileScreen = ({
       const gb = SEED_GAMES.find(g => g.id === b);
       return (ga?.kickoffInSec || 0) - (gb?.kickoffInSec || 0);
     });
-    const top = [...moments].sort((a, b) => (b.reactions || 0) - (a.reactions || 0))[0];
+    const top = moments[0];
     return /*#__PURE__*/React.createElement(React.Fragment, null,
       top && /*#__PURE__*/React.createElement("div", {
         className: "mb-5 -mx-4 px-4 py-3 bg-black text-white"
@@ -8403,7 +9087,7 @@ const AthleteProfileScreen = ({
         className: "flex items-center gap-1.5 mb-2"
       }, /*#__PURE__*/React.createElement("span", { className: "w-1 h-1 rounded-full bg-yellow-400 anim-pulse" }), /*#__PURE__*/React.createElement(Mono, {
         className: "text-[9.5px] tracking-widest uppercase font-bold text-zinc-300"
-      }, "MOST REACTED")), /*#__PURE__*/React.createElement("button", {
+      }, "TOP MOMENT")), /*#__PURE__*/React.createElement("button", {
         onClick: () => dispatch({ type: 'OPEN_HIGHLIGHTS', ids: [top.id], index: 0 }),
         className: "w-full text-left flex items-center gap-3"
       }, /*#__PURE__*/React.createElement("div", {
@@ -8413,9 +9097,9 @@ const AthleteProfileScreen = ({
         /*#__PURE__*/React.createElement(Mono, {
           className: "text-[10px] tracking-wider uppercase text-zinc-300 mt-0.5 block"
         }, (() => { const g = SEED_GAMES.find(x => x.id === top.gameId); return g ? `${g.home} vs ${g.away}` : 'Game'; })())
-      ), /*#__PURE__*/React.createElement(Mono, {
-        className: "text-[11px] font-bold tabular-nums px-2 py-1 border border-white"
-      }, "\u2605 ", top.reactions || 0))),
+      ), /*#__PURE__*/React.createElement("span", {
+        className: "text-[14px] text-white/60"
+      }, "\u203A"))),
       gameIds.map((gid, gi) => {
         const game = SEED_GAMES.find(g => g.id === gid);
         const gameMoments = byGame[gid];
@@ -9165,6 +9849,88 @@ const SettingsScreen = ({
 }));
 
 /* ===== HIGHLIGHT VIEWER ===== */
+const StorytellingDropViewer = ({ s, dispatch }) => {
+  const audience = s.persona === 'parent' ? 'parent' : s.persona === 'coach' ? 'coach' : 'player';
+  const drops = STORYTELLING_DROPS[audience] || STORYTELLING_DROPS.player;
+  // Look up in storytelling drops first; fall back to the player\u2019s insight log entries
+  const targetId = s.storytellingDrop.id;
+  const drop = drops.find(d => d.id === targetId)
+            || (s.identityLog || []).find(d => d.id === targetId)
+            || drops[0];
+  if (!drop) return null;
+  const moments = (drop.momentIds || []).map(id => SEED_MOMENTS.find(m => m.id === id)).filter(Boolean);
+  const [index, setIndex] = useState(0);
+  const scrollerRef = useRef(null);
+  const onScroll = (e) => {
+    const w = e.target.clientWidth || 1;
+    const i = Math.round(e.target.scrollLeft / (w * 0.82));
+    if (i !== index && i >= 0 && i < moments.length) setIndex(i);
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 z-50 bg-black anim-fade flex flex-col"
+  },
+    /*#__PURE__*/React.createElement("div", {
+      className: "absolute top-0 inset-x-0 z-30 px-4 pt-11 flex items-center justify-between"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "w-1.5 h-1.5 rounded-full bg-red-600 anim-pulse"
+    }), /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[9.5px] tracking-[0.18em] uppercase font-bold text-white"
+    }, "HALO Drop \xB7 ", moments.length, " Moments")), /*#__PURE__*/React.createElement("button", {
+      onClick: () => dispatch({ type: 'CLOSE_STORYTELLING_DROP' }),
+      className: "text-white text-[20px] leading-none w-7 h-7 flex items-center justify-center"
+    }, "\u2715")),
+    /*#__PURE__*/React.createElement("div", {
+      ref: scrollerRef,
+      onScroll: onScroll,
+      className: "flex gap-3 overflow-x-auto no-scrollbar pt-20 pb-4 px-[10%] shrink-0",
+      style: { scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', height: '60%' }
+    }, moments.map((m, i) => /*#__PURE__*/React.createElement("div", {
+      key: m.id,
+      className: "shrink-0 relative bg-zinc-900 border-[1.5px] border-white/30 overflow-hidden h-full",
+      style: { width: '80%', scrollSnapAlign: 'center', borderRadius: 14 }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "absolute inset-0 hatch-dark"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "absolute inset-0 flex items-center justify-center"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "w-14 h-14 rounded-full border-[1.5px] border-white/80 bg-black/30 flex items-center justify-center backdrop-blur-sm"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "text-white text-[18px] ml-0.5"
+    }, "\u25B6"))), /*#__PURE__*/React.createElement("div", {
+      className: "absolute top-2.5 left-2.5"
+    }, /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[9px] tracking-[0.16em] uppercase font-bold text-white/85 px-1.5 py-0.5 border border-white/30"
+    }, m.sub)), /*#__PURE__*/React.createElement("div", {
+      className: "absolute bottom-3 left-3 right-3"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-white font-extrabold text-[16px] leading-tight tracking-tight mb-1"
+    }, m.title), /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[9px] tracking-widest uppercase text-white/60"
+    }, "Moment ", i + 1, " of ", moments.length))))),
+    /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center justify-center gap-1.5 pb-3"
+    }, moments.map((_, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: cls("h-1 rounded-full transition-all", i === index ? "w-6 bg-white" : "w-1 bg-white/30")
+    }))),
+    /*#__PURE__*/React.createElement("div", {
+      className: "border-t-[1.5px] border-white/20 bg-zinc-950 px-4 pt-4 pb-7 flex-1 overflow-y-auto"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1.5 mb-2"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "w-1.5 h-1.5 rounded-full bg-red-600 anim-pulse"
+    }), /*#__PURE__*/React.createElement(Mono, {
+      className: "text-[9.5px] tracking-[0.18em] uppercase font-bold text-white/70"
+    }, "HALO Insight")), /*#__PURE__*/React.createElement("div", {
+      className: "text-white text-[20px] font-extrabold leading-[1.1] tracking-tight mb-2.5"
+    }, drop.title), /*#__PURE__*/React.createElement("div", {
+      className: "text-[13px] text-white/75 leading-relaxed"
+    }, drop.body))
+  );
+};
+
 const HighlightViewer = ({
   s,
   dispatch
@@ -9183,7 +9949,6 @@ const HighlightViewer = ({
   const sectionLabel = isPlayerHL ? 'Player Highlights' : 'Team Moments';
   const jerseyNum = player ? player.number : null;
   // Build a one-line narrative from available data
-  const narrative = `${m.reactions || 0} reactions \xB7 ${game ? `${game.home} vs ${game.away}` : 'this game'} \xB7 ${m.sub}`;
   const caption = isPlayerHL && player ? `${m.title.toLowerCase().includes('block') || m.title.toLowerCase().includes('rebound') || m.title.toLowerCase().includes('steal') ? m.title.split(' ')[0] : 'Play'} by #${player.number}` : null;
 
   return /*#__PURE__*/React.createElement("div", {
@@ -9248,53 +10013,46 @@ const HighlightViewer = ({
       }, /*#__PURE__*/React.createElement("div", {
         className: "px-4 pb-4"
       },
-        /* meta row: period · reactions */
+        /* meta row: period chip only */
         /*#__PURE__*/React.createElement("div", {
-          className: "flex items-center justify-between mb-2.5"
+          className: "mb-2.5"
         }, /*#__PURE__*/React.createElement(Mono, {
-          className: "text-[10px] tracking-[0.18em] uppercase font-bold text-white/85 px-2 py-0.5 border border-white/30"
-        }, m.sub), /*#__PURE__*/React.createElement(Mono, {
-          className: "text-[11px] tracking-wider font-bold text-white tabular-nums flex items-center gap-1"
-        }, /*#__PURE__*/React.createElement("span", null, "\u2605"), m.reactions || 0)),
+          className: "text-[10px] tracking-[0.18em] uppercase font-bold text-white/85 px-2 py-0.5 border border-white/30 inline-block"
+        }, m.sub)),
 
         /* big editorial headline */
         /*#__PURE__*/React.createElement("div", {
-          className: "text-white font-extrabold tracking-tight leading-[0.95] mb-1.5",
+          className: "text-white font-extrabold tracking-tight leading-[0.95] mb-3",
           style: { fontSize: 30 }
         }, isPlayerHL && jerseyNum != null ? `#${jerseyNum} Player Highlight` : 'Team Moment'),
 
-        /* narrative line */
-        /*#__PURE__*/React.createElement("div", {
-          className: "text-[12.5px] text-white/70 leading-relaxed mb-3 max-w-[88%]"
-        }, narrative),
+        /* matchup mono caps — single source of truth for opponents */
+        game && /*#__PURE__*/React.createElement(Mono, {
+          className: "text-[10px] tracking-[0.18em] uppercase font-bold text-white/55 block mb-5"
+        }, game.home, " vs ", game.away),
 
-        /* caption (e.g., Rebound by #N) */
-        caption && /*#__PURE__*/React.createElement("div", {
-          className: "text-[11.5px] text-white/55 mb-3 italic"
-        }, caption),
-
-        /* score row */
+        /* score row — left-aligned, content-width, no stretch */
         game && /*#__PURE__*/React.createElement("div", {
-          className: "flex items-center gap-2 mb-3 pb-3 border-b border-white/15"
+          className: "inline-flex items-center gap-3 mb-5"
         }, /*#__PURE__*/React.createElement("div", {
-          className: "w-5 h-5 rounded-full border border-white/40 bg-white/10 flex items-center justify-center"
+          className: "w-5 h-5 rounded-full border border-white/40 bg-white/10 flex items-center justify-center shrink-0"
         }, /*#__PURE__*/React.createElement(Mono, {
           className: "text-[8px] font-black text-white"
         }, game.home.charAt(0))), /*#__PURE__*/React.createElement(Mono, {
-          className: "text-[11px] tracking-wide font-bold text-white/85 truncate flex-1 min-w-0"
+          className: "text-[11px] tracking-wider uppercase font-bold text-white/80"
         }, game.home), /*#__PURE__*/React.createElement(Mono, {
-          className: "text-[14px] font-black tabular-nums text-white shrink-0 px-2"
+          className: "text-[15px] font-black tabular-nums text-white shrink-0 leading-none"
         }, game.scoreHome, " \u2014 ", game.scoreAway), /*#__PURE__*/React.createElement(Mono, {
-          className: "text-[11px] tracking-wide font-bold text-white/85 truncate flex-1 min-w-0 text-right"
+          className: "text-[11px] tracking-wider uppercase font-bold text-white/80"
         }, game.away), /*#__PURE__*/React.createElement("div", {
-          className: "w-5 h-5 rounded-full border border-white/40 bg-white/10 flex items-center justify-center"
+          className: "w-5 h-5 rounded-full border border-white/40 bg-white/10 flex items-center justify-center shrink-0"
         }, /*#__PURE__*/React.createElement(Mono, {
           className: "text-[8px] font-black text-white"
         }, game.away.charAt(0)))),
 
-        /* action row: Watch Game HL + Share */
+        /* action row: full-width — Watch Game HL stretches, share fixed */
         /*#__PURE__*/React.createElement("div", {
-          className: "flex items-stretch gap-2"
+          className: "flex items-stretch gap-2 mt-1"
         }, /*#__PURE__*/React.createElement("button", {
           onClick: () => { dispatch({ type: 'CLOSE_HIGHLIGHTS' }); dispatch({ type: 'PUSH', screen: { name: 'game-highlights', id: m.gameId, hlId: m.id } }); },
           className: "flex-1 py-2.5 bg-white text-black font-mono text-[10px] tracking-[0.16em] uppercase font-bold flex items-center justify-center gap-1.5"
