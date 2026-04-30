@@ -4925,7 +4925,8 @@ const HomeHeader = ({
 }) => {
   const persona = PERSONAS.find(p => p.key === s.persona);
   const isGuest = s.persona === 'guest';
-  return /*#__PURE__*/React.createElement("div", {
+  const [notifOpen, setNotifOpen] = useState(false);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "px-4 pt-14 pb-3 flex items-center justify-between sticky top-0 z-10 bg-white border-b-[1.5px] border-black"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2"
@@ -4988,6 +4989,7 @@ const HomeHeader = ({
     },
     className: "px-2.5 py-1 border-[1.5px] border-black bg-black text-white font-mono text-[10px] tracking-[0.12em] uppercase font-bold"
   }, "Sign up")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setNotifOpen(true),
     className: "relative w-8 h-8 border-[1.5px] border-black bg-white flex items-center justify-center",
     "aria-label": "Notifications"
   }, /*#__PURE__*/React.createElement("span", {
@@ -5000,7 +5002,76 @@ const HomeHeader = ({
       tab: 'profile'
     }),
     className: "w-8 h-8 border-[1.5px] border-black bg-white font-mono text-[10px] font-bold flex items-center justify-center"
-  }, persona?.avatarInitial || 'T'))));
+  }, persona?.avatarInitial || 'T')))), notifOpen && /*#__PURE__*/React.createElement(NotificationsSheet, {
+    onClose: () => setNotifOpen(false),
+    dispatch: dispatch
+  }));
+};
+
+const NotificationsSheet = ({ onClose, dispatch }) => {
+  const items = [
+    { id: 'n1', kind: 'drop',     who: 'Your Drop is ready',  avatar: '\u26AB', body: 'Last night\u2019s Drop unlocked \u2014 6 moments from Varsity vs Northside', when: '2h', isNew: true,  action: () => dispatch({ type: 'PUSH', screen: { name: 'post-game', id: 'gE' } }) },
+    { id: 'n2', kind: 'identity', who: 'New insight',         avatar: '\u25CF', body: '\u201CCrash on the boards\u201D \u2014 your latest read from last night', when: '4h', isNew: true,  action: () => dispatch({ type: 'PUSH', screen: { name: 'identity-detail', id: 'i1' } }) },
+    { id: 'n3', kind: 'game',     who: 'Tipoff Tue 6:30 PM',  avatar: 'V',       body: 'Varsity vs Lincoln \u2014 Eastside Gym', when: '1d', isNew: true,  action: () => dispatch({ type: 'PUSH', screen: { name: 'event-detail', id: 'g1' } }) }
+  ];
+  const newCount = items.filter(i => i.isNew).length;
+  const onItem = (it) => { onClose(); setTimeout(() => it.action(), 80); };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 bg-black/55 z-50 flex items-end anim-fade",
+    onClick: onClose
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: (e) => e.stopPropagation(),
+    className: "w-full bg-white border-t-[2px] border-black anim-slide-sheet",
+    style: { maxHeight: '78%' }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pt-2.5 pb-1 flex items-center justify-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-10 h-1 bg-zinc-300 rounded-full"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "px-4 pt-2 pb-3 flex items-center justify-between border-b-[1.5px] border-black"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[10px] tracking-[0.18em] uppercase font-bold"
+  }, "Notifications"), newCount > 0 && /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9px] tracking-[0.14em] uppercase font-bold text-white bg-red-600 px-1.5 py-0.5"
+  }, newCount, " new")), /*#__PURE__*/React.createElement("button", {
+    onClick: onClose,
+    className: "w-7 h-7 border-[1.5px] border-black bg-white flex items-center justify-center text-[11px]",
+    "aria-label": "Close"
+  }, "\u2715")), /*#__PURE__*/React.createElement("div", {
+    className: "max-h-[420px] overflow-y-auto"
+  }, items.map((it, i) => /*#__PURE__*/React.createElement("button", {
+    key: it.id,
+    onClick: () => onItem(it),
+    className: cls("w-full text-left px-4 py-3 flex items-start gap-3", i < items.length - 1 ? 'border-b border-dashed border-zinc-300' : '', it.isNew ? 'bg-white' : 'bg-zinc-50')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-9 h-9 border-[1.5px] border-black bg-white flex items-center justify-center shrink-0 relative"
+  }, /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[10px] font-bold leading-none"
+  }, it.avatar), it.isNew && /*#__PURE__*/React.createElement("span", {
+    className: "absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-red-600"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex-1 min-w-0"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[12.5px] leading-tight"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-extrabold"
+  }, it.who), " ", /*#__PURE__*/React.createElement("span", {
+    className: "text-zinc-700"
+  }, it.body)), /*#__PURE__*/React.createElement(Mono, {
+    className: "text-[9px] tracking-widest uppercase text-zinc-500 mt-1 block"
+  }, it.when, " ago")), /*#__PURE__*/React.createElement("span", {
+    className: "text-[12px] text-zinc-400 shrink-0 mt-1"
+  }, "\u203A")))), /*#__PURE__*/React.createElement("div", {
+    className: "border-t-[1.5px] border-black px-4 py-3 flex items-center justify-between bg-zinc-50"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => { onClose(); setTimeout(() => dispatch({ type: 'TOAST', toast: { msg: 'All marked as read' } }), 80); },
+    className: "font-mono text-[10px] tracking-[0.14em] uppercase font-bold text-zinc-600"
+  }, "Mark all read"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => { onClose(); setTimeout(() => dispatch({ type: 'PUSH', screen: { name: 'notifications-settings' } }), 80); },
+    className: "font-mono text-[10px] tracking-[0.14em] uppercase font-bold flex items-center gap-1"
+  }, "Settings ", /*#__PURE__*/React.createElement("span", null, "\u203A")))));
 };
 
 /* (FeedHeader replaced by HomeHeader) */
